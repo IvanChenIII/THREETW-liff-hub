@@ -165,6 +165,16 @@
     font-family:var(--font-mono); font-size:10.5px; color:var(--brass);
     margin:10px 0 4px; letter-spacing:0.02em;
   }
+  .policy-section h3 svg{width:16px; height:16px; stroke:var(--pine); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+  .tier-ladder{display:flex; flex-direction:column; gap:6px; margin-bottom:10px;}
+  .tier-row{
+    display:flex; align-items:center; gap:10px; padding:9px 12px;
+    background:var(--white); border:1px solid var(--line); border-radius:10px;
+  }
+  .tier-dot{width:9px; height:9px; border-radius:50%; background:var(--sage); flex-shrink:0;}
+  .tier-row.gold .tier-dot{background:var(--brass);}
+  .tier-name{font-family:var(--font-display); font-weight:600; font-size:12.5px; color:var(--ink); width:78px; flex-shrink:0;}
+  .tier-cond{font-size:11px; color:#6B7570; line-height:1.4;}
   .bar-chart{margin:14px 0 4px;}
   .bar-row{display:flex; align-items:center; gap:8px; margin-bottom:7px;}
   .bar-label{width:76px; flex-shrink:0; font-size:11px; color:var(--ink); text-align:right;}
@@ -310,7 +320,7 @@
     <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容，屬 BA 專屬資訊，請勿轉發給一般消費會員。產品名稱如與紙本文件有出入，請以公司正式文件為準（部分品名於掃描辨識時可能有誤植，待人工校對）。</div>
 
     <div class="policy-section">
-      <h3><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
+      <h3><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.5 12.5a2 2 0 002 1.5h8.5a2 2 0 002-1.7L21 7H6"/></svg><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
       <div class="policy-desc">經銷商及品牌大使可從客戶每次購買產品中獲得下表之收入，最快可於下一個工作日取得。</div>
       <table class="data-table">
         <tr><th>產品</th><th>零售價</th><th>客戶收入</th><th>CV</th></tr>
@@ -326,7 +336,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">02</span> 產品推薦收入 PIB（每週支付）</h3>
+      <h3><svg viewBox="0 0 24 24"><path d="M17 20l4-2v-2l-4 2m0 2v-2m0 2l-4-2v-2l4 2M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4V11M21 7v10l-9 4"/></svg><span class="num">02</span> 產品推薦收入 PIB（每週支付）</h3>
       <div class="policy-desc">活躍的品牌大使將從新推薦的品牌大使第一筆繳費訂單中獲得產品推薦收入。</div>
       <table class="data-table">
         <tr><th>套裝</th><th>PIB</th><th>套裝價</th><th>CV</th></tr>
@@ -342,7 +352,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">03</span> 消費積分收入（碰局收入，每週支付）</h3>
+      <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span class="num">03</span> 消費積分收入（碰局收入，每週支付）</h3>
       <div class="policy-desc">帳戶活躍的合格品牌大使適用。最低積分要求：小區300CV，大區600CV。團隊累積到300/600CV時，可獲得1,050元碰局收入。</div>
       <div class="sub-label">每週碰局上限</div>
       <ul class="mini-list">
@@ -359,29 +369,28 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">04</span> 級別表（資格條件）</h3>
-      <table class="data-table">
-        <tr><th>級別</th><th>資格條件</th></tr>
-        <tr><td>經銷商</td><td>支付後臺管理費、簽署合約，可購買客戶收入商品</td></tr>
-        <tr><td>品牌大使</td><td>過去52週內從個人/客戶訂單賺取100PV</td></tr>
-        <tr><td>合格品牌大使</td><td>左右區各直推1名品牌大使</td></tr>
-        <tr><td>一星</td><td>52週內累積800PGV（每線最多300PGV），左右區各≥300PGV</td></tr>
-        <tr><td>二星</td><td>52週內累積1,200PGV，左右區各≥400PGV</td></tr>
-        <tr><td>三星</td><td>52週內累積3,600PGV，左右區各≥900PGV</td></tr>
-        <tr><td>三星專家</td><td>4週內產生50個碰局</td></tr>
-        <tr><td>三星精英</td><td>4週內產生100個碰局</td></tr>
-        <tr><td>四星總裁</td><td>活躍度120PV，4週產生200碰局，2條三星直推線</td></tr>
-        <tr><td>五星總裁</td><td>活躍度120PV，4週產生500碰局，4條三星直推線</td></tr>
-        <tr><td>六星總裁</td><td>活躍度120PV，4週產生1,000碰局，6條三星直推線</td></tr>
-        <tr><td>七星總裁</td><td>活躍度120PV，4週產生1,500碰局，2條六星直推線</td></tr>
-        <tr><td>黃金鑽石</td><td>活躍度120PV，累積4,000,000PGV，2條六星直推線</td></tr>
-        <tr><td>皇冠鑽石</td><td>活躍度120PV，累積6,000,000PGV，6條六星直推線</td></tr>
-        <tr><td>皇家皇冠鑽石</td><td>活躍度120PV，累積8,000,000PGV，8條六星直推線</td></tr>
-      </table>
+      <h3><svg viewBox="0 0 24 24"><path d="M3 20V10M9 20V4M15 20v-7M21 20v-3"/></svg><span class="num">04</span> 級別表（資格條件）</h3>
+      <div class="tier-ladder">
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">經銷商</div><div class="tier-cond">支付後臺管理費、簽署合約，可購買客戶收入商品</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">品牌大使</div><div class="tier-cond">過去52週內從個人/客戶訂單賺取100PV</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">合格品牌大使</div><div class="tier-cond">左右區各直推1名品牌大使</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">一星</div><div class="tier-cond">52週累積800PGV，左右區各≥300PGV</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">二星</div><div class="tier-cond">52週累積1,200PGV，左右區各≥400PGV</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">三星</div><div class="tier-cond">52週累積3,600PGV，左右區各≥900PGV</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">三星專家</div><div class="tier-cond">4週內產生50個碰局</div></div>
+        <div class="tier-row"><div class="tier-dot"></div><div class="tier-name">三星精英</div><div class="tier-cond">4週內產生100個碰局</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">四星總裁</div><div class="tier-cond">活躍120PV，4週200碰局，2條三星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">五星總裁</div><div class="tier-cond">活躍120PV，4週500碰局，4條三星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">六星總裁</div><div class="tier-cond">活躍120PV，4週1,000碰局，6條三星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">七星總裁</div><div class="tier-cond">活躍120PV，4週1,500碰局，2條六星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">黃金鑽石</div><div class="tier-cond">活躍120PV，累積4,000,000PGV，2條六星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">皇冠鑽石</div><div class="tier-cond">活躍120PV，累積6,000,000PGV，6條六星直推線</div></div>
+        <div class="tier-row gold"><div class="tier-dot"></div><div class="tier-name">皇家皇冠鑽石</div><div class="tier-cond">活躍120PV，累積8,000,000PGV，8條六星直推線</div></div>
+      </div>
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">05</span> 團隊管理收入（每週支付）</h3>
+      <h3><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.5"/><path d="M2 21v-1a6 6 0 0112 0v1"/><circle cx="17" cy="8" r="2.8"/><path d="M15 21v-1a5 5 0 017 0v1"/></svg><span class="num">05</span> 團隊管理收入（每週支付）</h3>
       <div class="policy-desc">一星至三星精英活躍度需≥60PV；四星以上活躍度需≥120PV。收入為1,050元消費積分碰局收入之對應百分比：</div>
       <table class="data-table">
         <tr><th>級別</th><th>百分比累加</th></tr>
@@ -397,7 +406,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">06</span> 全球領導分紅收入（全球CV的3%，每週支付）</h3>
+      <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18M12 3a13 13 0 000 18"/></svg><span class="num">06</span> 全球領導分紅收入（全球CV的3%，每週支付）</h3>
       <div class="policy-desc">資格：須為四星總裁以上、活躍度120PV，且擁有5位活躍個人推薦客戶/品牌大使，4週內累積300CV。</div>
       <div class="sub-label">個人支付星等積分</div>
       <ul class="mini-list">
@@ -411,7 +420,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">07</span> 級別晉升獎金（每週支付，一次性）</h3>
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg><span class="num">07</span> 級別晉升獎金（每週支付，一次性）</h3>
       <table class="data-table">
         <tr><th>級別</th><th>獎勵禮券¹</th><th>代幣金額²</th><th>一次性現金</th></tr>
         <tr><td>一星</td><td>$3,000</td><td>—</td><td>—</td></tr>
@@ -441,7 +450,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">08</span> 獎勵活動</h3>
+      <h3><svg viewBox="0 0 24 24"><path d="M20 12v8a1 1 0 01-1 1H5a1 1 0 01-1-1v-8M2 7h20v5H2zM12 22V7M12 7c-2 0-4-1.5-4-3.5S9.5 1 11 2c1 .7 1 3 1 5zM12 7c2 0 4-1.5 4-3.5S13.5 1 12 2c-1 .7-1 3-1 5z"/></svg><span class="num">08</span> 獎勵活動</h3>
       <div class="sub-label">快樂10</div>
       <ul class="mini-list">
         <li>每有10位新客戶或新經銷商（兩者也可結合）購買產品，推薦人即可獲得一張價值3,000元的獎勵禮券，可重複獲得</li>
@@ -458,7 +467,7 @@
     </div>
 
     <div class="policy-section">
-      <h3><span class="num">09</span> 術語表</h3>
+      <h3><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="num">09</span> 術語表</h3>
       <table class="data-table">
         <tr><th>名詞</th><th>說明</th></tr>
         <tr><td>個人積分(PV)</td><td>個人和客戶消費所產生的積分，用於確定帳戶活躍狀態</td></tr>
@@ -483,26 +492,7 @@
 
   const CALENDAR_HTML = `
     <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📅 台灣思睿健康 行動月曆－2026年8月</div>
-
-    <div class="policy-section">
-      <table class="data-table">
-        <tr><th>日期</th><th>活動</th><th>時間</th><th>類別</th></tr>
-        <tr><td>8/1（六）</td><td>台灣思睿一週年慶</td><td>13:00–16:00</td><td>台北辦公室</td></tr>
-        <tr><td>8/5（三）</td><td>台北辦公室 Social Media</td><td>19:00–21:00</td><td>台北辦公室</td></tr>
-        <tr><td>8/6（四）</td><td>產品線上分享會</td><td>20:00–20:30</td><td>線上講座</td></tr>
-        <tr><td>8/8（六）</td><td>父親節（休）</td><td>—</td><td>—</td></tr>
-        <tr><td>8/12（三）</td><td>健康素養（台北）</td><td>19:00–20:30</td><td>台北辦公室</td></tr>
-        <tr><td>8/12（三）</td><td>Social Media（高雄）</td><td>18:30–20:30</td><td>高雄訓練中心</td></tr>
-        <tr><td>8/15（六）</td><td>嘟嘟好派對（台北）</td><td>14:30–17:00</td><td>台北線下活動</td></tr>
-        <tr><td>8/15（六）</td><td>嘟嘟好見面會（高雄）</td><td>10:00–16:00</td><td>高雄線下活動</td></tr>
-        <tr><td>8/19（三）</td><td>台北辦公室 Social Media</td><td>19:00–21:00</td><td>台北辦公室</td></tr>
-        <tr><td>8/27（四）</td><td>健康講座：告別短期減重，建立終身代謝</td><td>20:00–20:30</td><td>線上講座</td></tr>
-      </table>
-      <div class="policy-desc" style="margin-top:10px;">
-        <strong>台北辦公室地址：</strong>台北市松山區敦化北路167號4樓C室<br>
-        <strong>高雄訓練中心地址：</strong>高雄市前鎮區中山二路2號16樓之8
-      </div>
-    </div>
+    <img src="calendar-2026-08.jpg" alt="2026年8月行動月曆" style="width:100%; border-radius:16px; display:block; box-shadow:0 4px 16px rgba(31,58,52,0.1);">
   `;
 
   function openDetail(id, title, icon){
