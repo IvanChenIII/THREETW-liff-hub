@@ -99,34 +99,34 @@
 
   .card.disabled{opacity:0.55; pointer-events:none;}
   .card.disabled .icon-box{background:var(--brass-soft);}
-  .badge-soon{
-    font-family:var(--font-mono); font-size:10px; color:var(--brass);
-    background:var(--brass-soft); padding:2px 8px; border-radius:20px;
-    margin-left:6px; letter-spacing:0.04em;
-  }
-
-  .spotlight{
-    display:block; text-decoration:none; color:inherit;
+  .spot-list{display:flex; flex-direction:column; gap:12px;}
+  .spot-card{
+    display:flex; align-items:center; gap:14px;
     background:linear-gradient(135deg, var(--pine), var(--pine-soft));
-    border-radius:18px; padding:16px; margin-bottom:24px;
-    position:relative; overflow:hidden;
+    border-radius:18px; padding:15px 16px; position:relative; overflow:hidden;
+    text-decoration:none; color:inherit;
   }
-  .spotlight::after{
+  .spot-card::after{
     content:""; position:absolute; right:-30px; bottom:-30px;
-    width:120px; height:120px; border-radius:50%;
-    background:radial-gradient(circle, rgba(184,147,95,0.35), transparent 70%);
+    width:110px; height:110px; border-radius:50%;
+    background:radial-gradient(circle, rgba(184,147,95,0.3), transparent 70%);
   }
-  .spotlight-tag{
-    display:inline-flex; align-items:center; gap:5px;
-    font-family:var(--font-mono); font-size:10.5px; color:var(--brass);
-    background:rgba(184,147,95,0.18); padding:3px 10px; border-radius:20px;
-    letter-spacing:0.05em; margin-bottom:10px;
+  .spot-card.gold{background:linear-gradient(135deg, var(--brass), #8C6A3A);}
+  .spot-card.gold::after{background:radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);}
+  .spot-icon{
+    width:46px; height:46px; border-radius:14px; flex-shrink:0;
+    background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center;
+    position:relative; z-index:1;
   }
-  .spotlight-tag svg{width:12px; height:12px; stroke:var(--brass); fill:none; stroke-width:2;}
-  .spotlight-title{font-family:var(--font-display); font-size:17px; font-weight:700; color:var(--white); margin-bottom:4px;}
-  .spotlight-desc{font-size:12px; color:rgba(255,255,255,0.75); margin-bottom:2px;}
-  .spotlight-arrow{
-    position:absolute; right:16px; bottom:16px; color:rgba(255,255,255,0.6); font-size:20px;
+  .spot-icon svg{width:22px; height:22px; stroke:var(--white); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+  .spot-text{flex:1; position:relative; z-index:1;}
+  .spot-title{font-family:var(--font-display); font-weight:700; font-size:14.5px; color:var(--white);}
+  .spot-desc{font-size:11.5px; color:rgba(255,255,255,0.75); margin-top:2px;}
+  .spot-arrow{color:rgba(255,255,255,0.55); font-size:19px; position:relative; z-index:1;}
+  .spot-card.disabled{opacity:0.55; pointer-events:none;}
+  .spot-badge{
+    font-family:var(--font-mono); font-size:9.5px; color:var(--white);
+    background:rgba(255,255,255,0.22); padding:2px 8px; border-radius:20px; margin-left:6px;
   }
 
   /* ===== Detail overlay ===== */
@@ -234,80 +234,59 @@
 
   <main>
 
-    <a class="spotlight" href="#" onclick="openDetail('campaigns','進行中活動','🔥');return false;">
-      <div class="spotlight-tag"><svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg>限時進行中</div>
-      <div class="spotlight-title">進行中活動</div>
-      <div class="spotlight-desc">極限精選套組、耀星聚能營、濟州島之旅、雙倍旅遊積分</div>
-      <div class="spotlight-arrow">›</div>
-    </a>
+    <div class="spot-list">
+      <a class="spot-card" href="#" onclick="openDetail('campaigns','進行中活動','🔥');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg></div>
+        <div class="spot-text"><div class="spot-title">進行中活動</div><div class="spot-desc">極限精選套組、耀星聚能營、濟州島之旅、雙倍旅遊積分</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
 
-    <div class="group">
-      <div class="group-head">
-        <span class="group-index">01</span>
-        <span class="group-title">資訊 Information</span>
-        <span class="group-count">3則</span>
-      </div>
-      <div class="card-grid">
-        <a class="card" href="#" onclick="openDetail('calendar','活動行事曆','📅');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg></div>
-          <div class="card-text"><div class="card-title">活動行事曆</div><div class="card-desc">近期活動與重要日程</div></div>
-          <div class="chevron">›</div>
-        </a>
-        <a class="card" href="#" onclick="openDetail('products','產品介紹','📦');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><line x1="12" y1="13" x2="12" y2="21"/></svg></div>
-          <div class="card-text"><div class="card-title">產品介紹</div><div class="card-desc">單品成分與使用說明</div></div>
-          <div class="chevron">›</div>
-        </a>
-        <a class="card" href="#" onclick="openDetail('bundles','套組介紹','🎁');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c-2 0-3-1.5-3-3s1-3 3-2 3 1 3 2-1 3-3 3z"/></svg></div>
-          <div class="card-text"><div class="card-title">套組介紹</div><div class="card-desc">組合方案與優惠內容</div></div>
-          <div class="chevron">›</div>
-        </a>
-      </div>
-    </div>
+      <a class="spot-card" href="#" onclick="openDetail('calendar','活動行事曆','📅');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg></div>
+        <div class="spot-text"><div class="spot-title">活動行事曆</div><div class="spot-desc">近期活動與重要日程</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
 
-    <div class="group">
-      <div class="group-head">
-        <span class="group-index">02</span>
-        <span class="group-title">資源 Resources</span>
-        <span class="group-count">2則</span>
-      </div>
-      <div class="card-grid">
-        <a class="card" href="#" onclick="openDetail('policy','制度說明','📋');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div>
-          <div class="card-text"><div class="card-title">制度說明</div><div class="card-desc">獎勵制度・AI 問答小幫手</div></div>
-          <div class="chevron">›</div>
-        </a>
-        <a class="card" href="#" onclick="openDetail('assets','素材庫','🎨');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="14" cy="9" r="1"/><circle cx="15" cy="14" r="1"/><path d="M12 21c-1 0-1.5-1-1-2s1.5-1.5.5-2.5S9 15 9 13"/></svg></div>
-          <div class="card-text"><div class="card-title">素材庫</div><div class="card-desc">文宣、圖卡、Logo 下載</div></div>
-          <div class="chevron">›</div>
-        </a>
-      </div>
-    </div>
+      <a class="spot-card" href="#" onclick="openDetail('products','產品介紹','📦');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><line x1="12" y1="13" x2="12" y2="21"/></svg></div>
+        <div class="spot-text"><div class="spot-title">產品介紹</div><div class="spot-desc">單品成分與使用說明</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
 
-    <div class="group">
-      <div class="group-head">
-        <span class="group-index">03</span>
-        <span class="group-title">連結 Connect</span>
-        <span class="group-count">3則</span>
-      </div>
-      <div class="card-grid">
-        <a class="card" href="#" onclick="openDetail('links','官網／社群連結','🔗');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M10 14a3.5 3.5 0 005 0l3-3a3.5 3.5 0 00-5-5l-1 1"/><path d="M14 10a3.5 3.5 0 00-5 0l-3 3a3.5 3.5 0 005 5l1-1"/></svg></div>
-          <div class="card-text"><div class="card-title">官網／社群連結</div><div class="card-desc">官網、YouTube、Logo 等</div></div>
-          <div class="chevron">›</div>
-        </a>
-        <a class="card" href="#" onclick="openDetail('media','影片照片專區','📸');return false;">
-          <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
-          <div class="card-text"><div class="card-title">影片照片專區</div><div class="card-desc">活動花絮與宣傳素材</div></div>
-          <div class="chevron">›</div>
-        </a>
-        <div class="card disabled">
-          <div class="icon-box brass-bg"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></div>
-          <div class="card-text"><div class="card-title">打卡集點 <span class="badge-soon">敬請期待</span></div><div class="card-desc">下一階段規劃中</div></div>
-          <div class="chevron">›</div>
-        </div>
+      <a class="spot-card" href="#" onclick="openDetail('bundles','套組介紹','🎁');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8c-2 0-3-1.5-3-3s1-3 3-2 3 1 3 2-1 3-3 3z"/></svg></div>
+        <div class="spot-text"><div class="spot-title">套組介紹</div><div class="spot-desc">組合方案與優惠內容</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
+
+      <a class="spot-card" href="#" onclick="openDetail('policy','制度說明','📋');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div>
+        <div class="spot-text"><div class="spot-title">制度說明</div><div class="spot-desc">獎勵制度・AI 問答小幫手</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
+
+      <a class="spot-card" href="#" onclick="openDetail('assets','素材庫','🎨');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="14" cy="9" r="1"/><circle cx="15" cy="14" r="1"/><path d="M12 21c-1 0-1.5-1-1-2s1.5-1.5.5-2.5S9 15 9 13"/></svg></div>
+        <div class="spot-text"><div class="spot-title">素材庫</div><div class="spot-desc">文宣、圖卡、Logo 下載</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
+
+      <a class="spot-card" href="#" onclick="openDetail('links','官網／社群連結','🔗');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M10 14a3.5 3.5 0 005 0l3-3a3.5 3.5 0 00-5-5l-1 1"/><path d="M14 10a3.5 3.5 0 00-5 0l-3 3a3.5 3.5 0 005 5l1-1"/></svg></div>
+        <div class="spot-text"><div class="spot-title">官網／社群連結</div><div class="spot-desc">官網、YouTube、Logo 等</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
+
+      <a class="spot-card" href="#" onclick="openDetail('media','影片照片專區','📸');return false;">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+        <div class="spot-text"><div class="spot-title">影片照片專區</div><div class="spot-desc">活動花絮與宣傳素材</div></div>
+        <div class="spot-arrow">›</div>
+      </a>
+
+      <div class="spot-card gold disabled">
+        <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></div>
+        <div class="spot-text"><div class="spot-title">打卡集點 <span class="spot-badge">敬請期待</span></div><div class="spot-desc">下一階段規劃中</div></div>
+        <div class="spot-arrow">›</div>
       </div>
     </div>
 
@@ -719,6 +698,98 @@
     </div>
   `;
 
+  const PRODUCTS_HTML = `
+    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">✨ Visage 保養系列－資料來源：官方產品資料概要</div>
+
+    <div class="policy-section">
+      <div class="pack-card">
+        <img src="https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp" alt="Visage Pure Cleanse 淨潤洗面乳">
+        <div class="tier-name" style="width:auto; font-size:14px;">Visage Pure Cleanse｜淨潤洗面乳</div>
+        <div class="sub-label">主要功效</div>
+        <ul class="mini-list">
+          <li>有效清潔臉部雜質、妝容及防曬產品，保持天然油脂不流失</li>
+          <li>保持水潤，令肌膚柔嫩光滑；增強肌膚天然屏障</li>
+          <li>使肌膚更易吸收後續精華液及保濕產品</li>
+          <li>溫和配方，適合各種膚質，包括敏感肌</li>
+        </ul>
+        <div class="sub-label">高效成分</div>
+        <ul class="mini-list">
+          <li>尿囊素：增強保濕能力，提供細緻平滑效果</li>
+          <li>大車前草葉萃取物：天然舒緩效果</li>
+          <li>諾麗果萃取物：卓越抗氧化特性</li>
+          <li>荷荷巴籽油／向日葵籽油：滋潤及抗氧化保護</li>
+        </ul>
+        <div class="sub-label">建議用法</div>
+        <div class="tier-cond">將適量產品塗抹於濕潤的臉部和頸部，輕柔按摩後徹底沖洗乾淨，輕拍乾後再使用 Visage Radiant Toner。</div>
+      </div>
+
+      <div class="pack-card">
+        <img src="https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp" alt="Visage Radiant Toner 煥采化妝水">
+        <div class="tier-name" style="width:auto; font-size:14px;">Visage Radiant Toner｜煥采化妝水</div>
+        <div class="sub-label">主要功效</div>
+        <ul class="mini-list">
+          <li>幫助維持潔膚後肌膚穩定，保護天然pH值平衡</li>
+          <li>有效去除殘留污垢，為後續使用精華液奠定基礎</li>
+          <li>使毛孔更加緊緻，肌膚更細緻平滑</li>
+          <li>提供深層保濕，讓肌膚一整天水潤清新</li>
+        </ul>
+        <div class="sub-label">高效成分</div>
+        <ul class="mini-list">
+          <li>尿囊素：增強保濕能力，細緻平滑</li>
+          <li>煙醯胺：提升膚色和整體光采</li>
+          <li>β-葡聚糖：舒緩保濕，提供天然保護屏障</li>
+          <li>維他命C：提亮肌膚、促進膠原蛋白生成、抗氧化</li>
+        </ul>
+        <div class="sub-label">建議用法</div>
+        <div class="tier-cond">將瓶身與臉部保持適當距離，閉眼後均勻噴於潔淨肌膚上，充分吸收後再塗抹 Visage Super Serum。早晚使用。</div>
+      </div>
+
+      <div class="pack-card">
+        <img src="https://wall.threeinternational.com/hubfs/sku-serum-lg-638725633674569247.webp" alt="Visage Super Serum 極致精華液">
+        <div class="tier-name" style="width:auto; font-size:14px;">Visage Super Serum｜極致精華液</div>
+        <div class="sub-label">主要功效</div>
+        <ul class="mini-list">
+          <li>皺紋和表情紋的減少效果顯著</li>
+          <li>增加肌膚水潤度，並提升膚色均勻度</li>
+          <li>滋養現有健康肌膚並提供舒適感</li>
+          <li>抵禦環境因素，提升整體肌膚幸福感</li>
+        </ul>
+        <div class="sub-label">高效成分</div>
+        <ul class="mini-list">
+          <li>芫荽／竹葉花椒：肌膚舒適與滋養</li>
+          <li>向日葵：維持長壽分子NAD+，促進再生</li>
+          <li>五味子：提升彈性與保濕，促進膠原蛋白生成</li>
+          <li>補骨脂酚：促進膠原蛋白生成，減少紫外線影響</li>
+          <li>尿囊素／角鯊烯／維他命C：保濕、光滑、抗氧化</li>
+        </ul>
+        <div class="sub-label">建議用法</div>
+        <div class="tier-cond">取1-2次按壓的量均勻塗抹於潔淨臉部和頸部，再進行保濕護理。早晚使用。</div>
+      </div>
+
+      <div class="pack-card gold">
+        <img src="https://wall.threeinternational.com/hubfs/creme-caviar-web-image.jpg" alt="Visage Crème Caviar 奢華保濕霜">
+        <div class="tier-name" style="width:auto; font-size:14px;">Visage Crème Caviar｜奢華保濕霜</div>
+        <div class="sub-label">主要功效</div>
+        <ul class="mini-list">
+          <li>減少環境壓力、歲月痕跡與疲勞帶來的可見影響</li>
+          <li>維持肌膚水潤與彈性，長時間柔嫩透亮</li>
+          <li>強化天然防護機制，膚況穩定透亮</li>
+          <li>質地輕盈，迅速吸收，無厚重黏膩感</li>
+        </ul>
+        <div class="sub-label">高效成分</div>
+        <ul class="mini-list">
+          <li>地膚子萃取物（Mountain Caviar）：維持水潤與活力</li>
+          <li>竹葉花椒果萃取物：舒緩鎮靜</li>
+          <li>人參根萃取物：賦予活力，展現透亮光采</li>
+          <li>地茶葉萃取物：維持肌膚平衡</li>
+          <li>神經美容分子（六胜肽-4、四胜肽-7）：昇華肌膚活力</li>
+        </ul>
+        <div class="sub-label">建議用法</div>
+        <div class="tier-cond">取適量（約珍珠大小）塗抹於已使用化妝水的潔淨肌膚上，以指腹輕柔向上按摩臉頸。早晚使用，作為Visage護膚程序的最後一步。</div>
+      </div>
+    </div>
+  `;
+
   function openDetail(id, title, icon){
     document.getElementById('detailTitle').textContent = title;
     const body = document.querySelector('#detailView .detail-body');
@@ -730,6 +801,8 @@
       body.innerHTML = BUNDLES_HTML;
     } else if (id === 'campaigns') {
       body.innerHTML = CAMPAIGNS_HTML;
+    } else if (id === 'products') {
+      body.innerHTML = PRODUCTS_HTML;
     } else {
       body.innerHTML = PLACEHOLDER_HTML;
       document.getElementById('detailIcon2').textContent = icon;
