@@ -231,6 +231,12 @@
   .prod-detail-header{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
   .prod-detail-header img{width:64px; height:64px; object-fit:cover; border-radius:12px; flex-shrink:0;}
   .prod-detail-header .prod-detail-name{font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--pine);}
+  .prod-tagline{font-size:12.5px; color:var(--brass); font-weight:600; margin-bottom:10px;}
+  .prod-desc-p{font-size:12.5px; color:#5A625C; line-height:1.7; margin-bottom:16px;}
+  .prod-highlights{display:flex; gap:10px;}
+  .prod-highlight-item{flex:1; text-align:center; background:var(--sage-pale); border-radius:12px; padding:12px 6px;}
+  .prod-highlight-item svg{width:22px; height:22px; stroke:var(--pine); fill:none; stroke-width:1.7; margin-bottom:6px;}
+  .prod-highlight-item .prod-highlight-text{font-size:10.5px; color:var(--ink); line-height:1.35; font-weight:500;}
   .bar-chart{margin:14px 0 4px;}
   .bar-row{display:flex; align-items:center; gap:8px; margin-bottom:7px;}
   .bar-label{width:76px; flex-shrink:0; font-size:11px; color:var(--ink); text-align:right;}
@@ -617,7 +623,7 @@
   `;
 
   const CAMPAIGNS_HTML = `
-    <div class="policy-note" style="background:#BEAB7; color:#35553B;">🔥 限時活動－優惠截止：8月24日 晚上11:59（北美山區時間）／8月25日 下午1:59（台灣時間）</div>
+    <div class="policy-note" style="background:#DCEDDC; color:#35553B;">🔥 限時活動－優惠截止：8月24日 晚上11:59（北美山區時間）／8月25日 下午1:59（台灣時間）</div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg>極限精選套組（Limitless Packs）</h3>
@@ -664,7 +670,7 @@
     </div>
 
     <div class="policy-section">
-    <div class="policy-note" style="background:#BEAB7; color:#35553B;">🔥 限時活動－資格考核期：2026年6月2日至9月1日（台灣時間）。</div>
+    <div class="policy-note" style="background:#DCEDDC; color:#35553B;">🔥 限時活動－資格考核期：2026年6月2日至9月1日（台灣時間）。</div>
       <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>亞太地區「耀星聚能營」（APAC Leadership Retreat）</h3>
       <img src="https://wall.threeinternational.com/hs-fs/hubfs/Retreat%20promo_Banners_2605_v1_APAC_TW_Wall.png?width=800&height=800" alt="耀星聚能營" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
       <div class="policy-desc">加入亞太區耀星聚能營，與頂尖領導者同場交流，透過培訓與獨特體驗拓展事業視野。</div>
@@ -686,7 +692,7 @@
     </div>
 
     <div class="policy-section">
-      <div class="policy-note" style="background:#BEAB7; color:#35553B;">🔥 限時活動－資格考核期：2026年8月4日下午3:00至2026年12月29日下午2:59（台灣時間）。</div>
+      <div class="policy-note" style="background:#DCEDDC; color:#35553B;">🔥 限時活動－資格考核期：2026年8月4日下午3:00至2026年12月29日下午2:59（台灣時間）。</div>
       <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>濟州島夢幻旅程（Race to Jeju Island）</h3>
       <img src="https://wall.threeinternational.com/hubfs/260804_Banner_Race%20to%20Jeju%20Island_TCH_Wall.png" alt="濟州島夢幻旅程" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
       <div class="policy-desc">達成資格即可贏得5天4夜濟州島獎勵之旅，共4種達標途徑、4個達標層級。</div>
@@ -694,7 +700,7 @@
     </div>
 
     <div class="policy-section">
-    <div class="policy-note" style="background:#BEAB7; color:#35553B;">🔥 限時活動－活動時間：2026年8月8日下午2:00至8月25日下午1:59（台灣時間）。</div>
+    <div class="policy-note" style="background:#DCEDDC; color:#35553B;">🔥 限時活動－活動時間：2026年8月8日下午2:00至8月25日下午1:59（台灣時間）。</div>
       <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>雙倍旅遊積分（Double PSV Bonus）</h3>
       <img src="https://wall.threeinternational.com/hubfs/DoubleYourPSV-APAC_Banners_2608_v1_TCH_Wall.png" alt="雙倍旅遊積分" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
       <div class="policy-desc">限定期間內，個人推薦新品牌大使加入，即可在「濟州島旅遊獎勵」競賽中獲得雙倍個人團隊積分（PSV）。</div>
@@ -716,191 +722,124 @@
     </div>
   `;
 
+  const ICON_LEAF = '<svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg>';
+  const ICON_SHIELD = '<svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>';
+  const ICON_DROP = '<svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 8 6 12a6 6 0 01-12 0c0-4 3-8 6-12z"/></svg>';
+  const ICON_SPARK = '<svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>';
+  const ICON_HEART = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>';
+  const ICON_SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>';
+
   const PRODUCT_DETAILS = {
-    cleanse: {
-      name: "Visage Pure Cleanse｜淨潤洗面乳",
-      img: "https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp",
-      html: `
-        <div class="sub-label">主要功效</div>
-        <ul class="mini-list">
-          <li>有效清潔臉部雜質、妝容及防曬產品，保持天然油脂不流失</li>
-          <li>保持水潤，令肌膚柔嫩光滑；增強肌膚天然屏障</li>
-          <li>使肌膚更易吸收後續精華液及保濕產品</li>
-          <li>溫和配方，適合各種膚質，包括敏感肌</li>
-        </ul>
-        <div class="sub-label">高效成分</div>
-        <ul class="mini-list">
-          <li>尿囊素：增強保濕能力，提供細緻平滑效果</li>
-          <li>大車前草葉萃取物：天然舒緩效果</li>
-          <li>諾麗果萃取物：卓越抗氧化特性</li>
-          <li>荷荷巴籽油／向日葵籽油：滋潤及抗氧化保護</li>
-        </ul>
-        <div class="sub-label">建議用法</div>
-        <div class="tier-cond">將適量產品塗抹於濕潤的臉部和頸部，輕柔按摩後徹底沖洗乾淨，輕拍乾後再使用 Visage Radiant Toner。</div>
-      `
-    },
-    toner: {
-      name: "Visage Radiant Toner｜煥采化妝水",
-      img: "https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp",
-      html: `
-        <div class="sub-label">主要功效</div>
-        <ul class="mini-list">
-          <li>幫助維持潔膚後肌膚穩定，保護天然pH值平衡</li>
-          <li>有效去除殘留污垢，為後續使用精華液奠定基礎</li>
-          <li>使毛孔更加緊緻，肌膚更細緻平滑</li>
-          <li>提供深層保濕，讓肌膚一整天水潤清新</li>
-        </ul>
-        <div class="sub-label">高效成分</div>
-        <ul class="mini-list">
-          <li>尿囊素：增強保濕能力，細緻平滑</li>
-          <li>煙醯胺：提升膚色和整體光采</li>
-          <li>β-葡聚糖：舒緩保濕，提供天然保護屏障</li>
-          <li>維他命C：提亮肌膚、促進膠原蛋白生成、抗氧化</li>
-        </ul>
-        <div class="sub-label">建議用法</div>
-        <div class="tier-cond">將瓶身與臉部保持適當距離，閉眼後均勻噴於潔淨肌膚上，充分吸收後再塗抹 Visage Super Serum。早晚使用。</div>
-      `
-    },
-    serum: {
-      name: "Visage Super Serum｜極致精華液",
-      img: "https://wall.threeinternational.com/hubfs/sku-serum-lg-638725633674569247.webp",
-      html: `
-        <div class="sub-label">主要功效</div>
-        <ul class="mini-list">
-          <li>皺紋和表情紋的減少效果顯著</li>
-          <li>增加肌膚水潤度，並提升膚色均勻度</li>
-          <li>滋養現有健康肌膚並提供舒適感</li>
-          <li>抵禦環境因素，提升整體肌膚幸福感</li>
-        </ul>
-        <div class="sub-label">高效成分</div>
-        <ul class="mini-list">
-          <li>芫荽／竹葉花椒：肌膚舒適與滋養</li>
-          <li>向日葵：維持長壽分子NAD+，促進再生</li>
-          <li>五味子：提升彈性與保濕，促進膠原蛋白生成</li>
-          <li>補骨脂酚：促進膠原蛋白生成，減少紫外線影響</li>
-          <li>尿囊素／角鯊烯／維他命C：保濕、光滑、抗氧化</li>
-        </ul>
-        <div class="sub-label">建議用法</div>
-        <div class="tier-cond">取1-2次按壓的量均勻塗抹於潔淨臉部和頸部，再進行保濕護理。早晚使用。</div>
-      `
-    },
-    creme: {
-      name: "Visage Crème Caviar｜奢華保濕霜",
-      img: "https://wall.threeinternational.com/hubfs/creme-caviar-web-image.jpg",
-      html: `
-        <div class="sub-label">主要功效</div>
-        <ul class="mini-list">
-          <li>減少環境壓力、歲月痕跡與疲勞帶來的可見影響</li>
-          <li>維持肌膚水潤與彈性，長時間柔嫩透亮</li>
-          <li>強化天然防護機制，膚況穩定透亮</li>
-          <li>質地輕盈，迅速吸收，無厚重黏膩感</li>
-        </ul>
-        <div class="sub-label">高效成分</div>
-        <ul class="mini-list">
-          <li>地膚子萃取物（Mountain Caviar）：維持水潤與活力</li>
-          <li>竹葉花椒果萃取物：舒緩鎮靜</li>
-          <li>人參根萃取物：賦予活力，展現透亮光采</li>
-          <li>地茶葉萃取物：維持肌膚平衡</li>
-          <li>神經美容分子（六胜肽-4、四胜肽-7）：昇華肌膚活力</li>
-        </ul>
-        <div class="sub-label">建議用法</div>
-        <div class="tier-cond">取適量（約珍珠大小）塗抹於已使用化妝水的潔淨肌膚上，以指腹輕柔向上按摩臉頸。早晚使用，作為Visage護膚程序的最後一步。</div>
-      `
-    }
+    cleanse: { name:"Pure Cleanse｜淨潤洗面乳", tagline:"溫和潔膚，平衡肌膚",
+      img:"https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp",
+      desc:"THREE的Visage Pure Cleanse，給您細緻溫和的潔膚體驗，讓護膚程序更顯尊榮。精選自然成分並配合創新科技，潔膚之際亦維持肌膚水分穩定。",
+      highlights:[[ICON_DROP,"保持天然油脂不流失"],[ICON_SPARK,"提升後續保養吸收力"],[ICON_LEAF,"溫和適合各種膚質"]] },
+    toner: { name:"Radiant Toner｜煥采化妝水", tagline:"保濕化妝水，提升吸收力",
+      img:"https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp",
+      desc:"THREE的Visage Radiant Toner，是您護膚儀式中的煥活肌膚關鍵步驟，結合尖端成分與清爽配方，適用於所有膚質。",
+      highlights:[[ICON_SHIELD,"維持肌膚pH平衡"],[ICON_SPARK,"緊緻毛孔"],[ICON_DROP,"深層保濕清新"]] },
+    serum: { name:"Visage Super Serum｜極致精華液", tagline:"煥發光彩肌膚的神經美容產品",
+      img:"https://wall.threeinternational.com/hubfs/sku-serum-lg-638725633674569247.webp",
+      desc:"THREE這款革命性的夢幻精華液，結合臨床驗證的成分與全面護理理念，每次使用都能見證顯著效果。",
+      highlights:[[ICON_SPARK,"減少皺紋與表情紋"],[ICON_DROP,"提升水潤與膚色均勻"],[ICON_SHIELD,"抵禦環境因素影響"]] },
+    creme: { name:"Visage Crème Caviar｜奢華保濕霜", tagline:"奢華保濕霜",
+      img:"https://wall.threeinternational.com/hubfs/creme-caviar-web-image.jpg",
+      desc:"THREE Visage Crème Caviar融合珍稀植物萃取、神經美容分子與群體感應技術，深層滋養、保濕並賦活肌膚。",
+      highlights:[[ICON_SHIELD,"減少歲月痕跡影響"],[ICON_DROP,"維持水潤與彈性"],[ICON_SPARK,"質地輕盈迅速吸收"]] },
+    visage_collection: { name:"The Visage Collection", tagline:"奢華護膚系統，滋潤肌膚，煥發光彩",
+      img:null,
+      desc:"The Visage Collection集結Visage系列完整護膚步驟，從潔膚、化妝水、精華液到保濕霜，打造專屬的奢華護膚儀式。",
+      highlights:[[ICON_LEAF,"完整護膚步驟一次擁有"],[ICON_SHIELD,"群體感應科技全面呵護"],[ICON_SPARK,"由內而外煥發光彩"]] },
+    glp: { name:"GLP THREE™", tagline:"小瓶裝，大效果",
+      img:null,
+      desc:"GLP THREE™是一款創新產品，專為支持體重管理目標而設計。以MBC-267™天然胜肽複合物為核心，源自挪威海域鮭魚與菇類萃取，口服無需注射。",
+      highlights:[[ICON_HEART,"幫助減少食慾渴望"],[ICON_SPARK,"支持體重管理目標"],[ICON_SHIELD,"維持精實肌肉量"]] },
+    glp_box: { name:"GLP THREE（4支）1盒裝", tagline:"小瓶裝，大效果",
+      img:null,
+      desc:"同GLP THREE™配方，4支裝提供更持續的補充週期，方便安排日常使用節奏。",
+      highlights:[[ICON_HEART,"同款天然胜肽複合物"],[ICON_SPARK,"4支裝補充更方便"],[ICON_SHIELD,"口服無需注射"]] },
+    kynetik: { name:"Kynetik 純淨咖啡因（莓果爆發口味）", tagline:"植物能量純淨咖啡因飲品混合粉",
+      img:null,
+      desc:"Kynetik以植物來源純淨咖啡因調配而成，莓果爆發口味，為忙碌生活提供順口的天然能量補充選擇。",
+      highlights:[[ICON_SUN,"植物來源純淨咖啡因"],[ICON_SPARK,"莓果爆發風味"],[ICON_DROP,"沖泡即飲方便攜帶"]] },
+    eternel: { name:"Éternel（恩蓓）", tagline:"抗氧化超級混合物",
+      img:"product-eternel.jpg",
+      desc:"為您的身體建立抗衰老防線。Éternel是一種先進的脂質體抗氧化劑和多酚的混合物，它有助於保護您的身體細胞和系統免受自由基的損害。",
+      highlights:[[ICON_SHIELD,"支援細胞健康抗老"],[ICON_SPARK,"中和自由基"],[ICON_SUN,"防止紫外線損害"]] },
+    collagene: { name:"Collagène（蔻絲）", tagline:"源自海洋的膠原蛋白",
+      img:"product-collagene.jpg",
+      desc:"使用Collagène膠原蛋白，讓您煥發光彩。這種膠原蛋白和其他強力成分的美妙混合物，能夠滋養您的每個細胞，讓您的肌膚、秀髮和指甲保持活力和健康。",
+      highlights:[[ICON_SPARK,"促進肌膚活力年輕化"],[ICON_LEAF,"5克高生物利用率膠原"],[ICON_SHIELD,"保持免疫與關節健康"]] },
+    vitalite: { name:"Vitalité", tagline:"超級食物混合物＋多種維生素複合物",
+      img:"product-vitalite.jpg",
+      desc:"為您的身體建立營養基礎。Vitalité能夠在細胞水平上發揮作用，為您的身體提供必要的營養，使其處於最佳狀態。",
+      highlights:[[ICON_LEAF,"提供關鍵維生素礦物質"],[ICON_HEART,"促進心臟腦部眼睛健康"],[ICON_SPARK,"保持腸道微生物群健康"]] },
+    revive: { name:"Revíve", tagline:"關節與肌肉養護修復",
+      img:null,
+      desc:"持續使用Revíve產品。這種獨特配方專門設計用於在細胞層面發揮作用，有助於保持關節健康，增強運動的靈活性與自由度。",
+      highlights:[[ICON_SHIELD,"維持關節健康"],[ICON_DROP,"緩解肌肉僵硬"],[ICON_SPARK,"促進運動後恢復"]] },
+    purifi: { name:"Purifí", tagline:"全身排毒，淨化平衡",
+      img:null,
+      desc:"幫助身體日常排毒。Purifí是一種先進的淨化草藥和富里酸的混合物，可在細胞水平上發揮作用，幫助排毒器官清除有害的毒素和污染物。",
+      highlights:[[ICON_LEAF,"幫助五大器官排毒"],[ICON_SPARK,"增加身體營養吸收"],[ICON_SHIELD,"有助消除重金屬毒素"]] },
+    imune: { name:"Imúne", tagline:"健康防護，提升整體健康",
+      img:null,
+      desc:"使用Imúne有助於增強自我保護。這種獨特的維生素、礦物質和植物化學物質混合物，專門設計用於細胞層面，提高並增強身體的自然免疫反應。",
+      highlights:[[ICON_SHIELD,"促進先天與適應性免疫"],[ICON_HEART,"提高健康免疫反應"],[ICON_LEAF,"增強腸道微生物群活性"]] }
   };
 
-  function productListHTML(){
+  function prodMiniHTML(key){
+    const p = PRODUCT_DETAILS[key];
+    const imgHtml = p.img
+      ? `<img src="${p.img}" alt="${p.name}">`
+      : `<div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><span style="color:var(--pine);">${ICON_LEAF}</span></div>`;
     return `
-      <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">🛍️ THREE 全系列產品目錄－資料來源：官網產品頁</div>
+      <div class="prod-mini" onclick="showProductDetail('${key}')">
+        ${imgHtml}
+        <div class="prod-mini-text"><div class="prod-mini-title">${p.name}</div><div class="prod-mini-sub">${p.tagline}</div></div>
+        <div class="chevron">›</div>
+      </div>`;
+  }
+
+  function productListHTML(){
+    const skincareKeys = ['cleanse','toner','serum','creme','visage_collection'];
+    const weightKeys = ['glp','glp_box'];
+    const energyKeys = ['kynetik'];
+    const wellnessKeys = ['eternel','collagene','vitalite','revive','purifi','imune'];
+    return `
+      <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">🛍️ THREE 全系列產品目錄－點選產品查看完整介紹</div>
 
       <div class="sub-label" style="font-size:12px; margin-top:4px;">護膚 Skincare</div>
-      <div class="prod-grid" style="margin-bottom:16px;">
-        <div class="prod-mini" onclick="showProductDetail('cleanse')">
-          <img src="${PRODUCT_DETAILS.cleanse.img}" alt="Pure Cleanse">
-          <div class="prod-mini-text"><div class="prod-mini-title">Pure Cleanse</div><div class="prod-mini-sub">溫和潔膚，平衡肌膚</div></div>
-          <div class="chevron">›</div>
-        </div>
-        <div class="prod-mini" onclick="showProductDetail('toner')">
-          <img src="${PRODUCT_DETAILS.toner.img}" alt="Radiant Toner">
-          <div class="prod-mini-text"><div class="prod-mini-title">Radiant Toner</div><div class="prod-mini-sub">保濕化妝水，提升吸收力</div></div>
-          <div class="chevron">›</div>
-        </div>
-        <div class="prod-mini" onclick="showProductDetail('serum')">
-          <img src="${PRODUCT_DETAILS.serum.img}" alt="Visage Super Serum">
-          <div class="prod-mini-text"><div class="prod-mini-title">Visage Super Serum</div><div class="prod-mini-sub">煥發光彩肌膚的神經美容產品</div></div>
-          <div class="chevron">›</div>
-        </div>
-        <div class="prod-mini" onclick="showProductDetail('creme')">
-          <img src="${PRODUCT_DETAILS.creme.img}" alt="Visage Crème Caviar">
-          <div class="prod-mini-text"><div class="prod-mini-title">Visage Crème Caviar</div><div class="prod-mini-sub">奢華保濕霜</div></div>
-          <div class="chevron">›</div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">The Visage Collection</div><div class="prod-mini-sub">奢華護膚系統，滋潤肌膚，煥發光彩</div></div>
-        </div>
-      </div>
+      <div class="prod-grid" style="margin-bottom:16px;">${skincareKeys.map(prodMiniHTML).join('')}</div>
 
       <div class="sub-label" style="font-size:12px;">體重管理 Weight Management</div>
-      <div class="prod-grid" style="margin-bottom:16px;">
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M10 8v3a2 2 0 002 2 2 2 0 002-2V8"/><path d="M8 22h8l-1-9H9z"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">GLP THREE™</div><div class="prod-mini-sub">小瓶裝，大效果</div></div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M10 8v3a2 2 0 002 2 2 2 0 002-2V8"/><path d="M8 22h8l-1-9H9z"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">GLP THREE（4支）1盒裝</div><div class="prod-mini-sub">小瓶裝，大效果</div></div>
-        </div>
-      </div>
+      <div class="prod-grid" style="margin-bottom:16px;">${weightKeys.map(prodMiniHTML).join('')}</div>
 
       <div class="sub-label" style="font-size:12px;">天然能量 Natural Energy</div>
-      <div class="prod-grid" style="margin-bottom:16px;">
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><path d="M6 3h9l3 5-7.5 13L3 8z"/><path d="M9 3l3 5 3-5M3 8h18"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">Kynetik 純淨咖啡因（莓果爆發口味）</div><div class="prod-mini-sub">植物能量純淨咖啡因飲品混合粉</div></div>
-        </div>
-      </div>
+      <div class="prod-grid" style="margin-bottom:16px;">${energyKeys.map(prodMiniHTML).join('')}</div>
 
       <div class="sub-label" style="font-size:12px;">健康與養生 Health & Wellness</div>
-      <div class="prod-grid">
-        <div class="prod-mini">
-          <img src="https://threeinternational.com/shopping/productimages/EnrollmentPacks%28Updated-Packaging%29_SKU_2608_v1_Eternel-NEWCartonSachet.png" alt="Éternel">
-          <div class="prod-mini-text"><div class="prod-mini-title">Éternel（恩蓓）</div><div class="prod-mini-sub">抗氧化配方，守護細胞健康活力</div></div>
-        </div>
-        <div class="prod-mini">
-          <img src="https://threeinternational.com/shopping/productimages/EnrollmentPacks%28Updated-Packaging%29_SKU_2608_v1_Collagene-CartonSachetNEW.png" alt="Collagène">
-          <div class="prod-mini-text"><div class="prod-mini-title">Collagène（蔻絲）</div><div class="prod-mini-sub">高效膠原蛋白，滋養秀髮、肌膚與指甲</div></div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">Vitalité</div><div class="prod-mini-sub">全方位綜合維生素，補充每日所需的營養</div></div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">Revíve</div><div class="prod-mini-sub">關節與肌肉養護修復</div></div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><path d="M12 3c1 4-3 5-3 9a3 3 0 006 0c0-4-4-5-3-9z"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">Purifí</div><div class="prod-mini-sub">全身排毒，淨化平衡</div></div>
-        </div>
-        <div class="prod-mini">
-          <div class="spot-icon" style="background:var(--sage-pale); width:58px; height:58px; border-radius:10px;"><svg viewBox="0 0 24 24" style="stroke:var(--pine);"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
-          <div class="prod-mini-text"><div class="prod-mini-title">Imúne</div><div class="prod-mini-sub">健康防護，提升整體健康</div></div>
-        </div>
-      </div>
+      <div class="prod-grid">${wellnessKeys.map(prodMiniHTML).join('')}</div>
     `;
   }
 
   function showProductDetail(key){
     const p = PRODUCT_DETAILS[key];
     const body = document.querySelector('#detailView .detail-body');
+    const imgHtml = p.img
+      ? `<img src="${p.img}" alt="${p.name}">`
+      : `<div class="spot-icon" style="background:var(--sage-pale); width:64px; height:64px; border-radius:12px;"><span style="color:var(--pine);">${ICON_LEAF}</span></div>`;
     body.innerHTML = `
       <div class="prod-back" onclick="body_backToProductList()">‹ 返回產品列表</div>
       <div class="prod-detail-header">
-        <img src="${p.img}" alt="${p.name}">
+        ${imgHtml}
         <div class="prod-detail-name">${p.name}</div>
       </div>
-      ${p.html}
+      <div class="prod-tagline">${p.tagline}</div>
+      <div class="prod-desc-p">${p.desc}</div>
+      <div class="prod-highlights">
+        ${p.highlights.map(h => `<div class="prod-highlight-item">${h[0]}<div class="prod-highlight-text">${h[1]}</div></div>`).join('')}
+      </div>
     `;
   }
 
