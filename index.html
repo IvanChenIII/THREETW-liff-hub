@@ -757,7 +757,7 @@
     vitalite: { name:"Vitalité", tagline:"超級食物混合物＋多種維生素複合物",
       img:"product-vitalite.jpg",
       desc:"為您的身體建立營養基礎。Vitalité能夠在細胞水平上發揮作用，為您的身體提供必要的營養，使其處於最佳狀態。",
-      highlights:[[ICON_LEAF,"提供關鍵維生素礦物質"],[ICON_HEART,"促進心臟腦部眼睛健康"],[ICON_SPARK,"保持腸道微生物群健康"]] },
+      highlights:[[ICON_LEAF,"提供關鍵維生素礦物質"],[ICON_HEART,"促進心臟腦部眼睛健康"],[ICON_SPARK,"保持腸道微生物群健康"]] }
   };
 
   function prodMiniHTML(key){
@@ -774,21 +774,13 @@
   }
 
   function productListHTML(){
-    const skincareKeys = ['cleanse','toner','serum','creme','visage_collection'];
-    const weightKeys = ['glp','glp_box'];
-    const energyKeys = ['kynetik'];
-    const wellnessKeys = ['eternel','collagene','vitalite','revive','purifi','imune'];
+    const skincareKeys = ['cleanse','toner','serum','creme'];
+    const wellnessKeys = ['eternel','collagene','vitalite'];
     return `
       <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">🛍️ THREE 全系列產品目錄－點選產品查看完整介紹</div>
 
       <div class="sub-label" style="font-size:12px; margin-top:4px;">護膚 Skincare</div>
       <div class="prod-grid" style="margin-bottom:16px;">${skincareKeys.map(prodMiniHTML).join('')}</div>
-
-      <div class="sub-label" style="font-size:12px;">體重管理 Weight Management</div>
-      <div class="prod-grid" style="margin-bottom:16px;">${weightKeys.map(prodMiniHTML).join('')}</div>
-
-      <div class="sub-label" style="font-size:12px;">天然能量 Natural Energy</div>
-      <div class="prod-grid" style="margin-bottom:16px;">${energyKeys.map(prodMiniHTML).join('')}</div>
 
       <div class="sub-label" style="font-size:12px;">健康與養生 Health & Wellness</div>
       <div class="prod-grid">${wellnessKeys.map(prodMiniHTML).join('')}</div>
