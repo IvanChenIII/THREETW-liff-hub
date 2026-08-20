@@ -133,6 +133,35 @@
     text-align:center; padding:18px 0 4px; font-family:var(--font-mono);
     font-size:10.5px; color:#9AA29C; letter-spacing:0.06em;
   }
+
+  /* ===== Policy content ===== */
+  .policy-note{
+    background:var(--brass-soft); border-radius:12px; padding:12px 14px;
+    font-size:12px; color:#6B5330; line-height:1.6; margin-bottom:20px;
+  }
+  .policy-section{margin-bottom:26px;}
+  .policy-section h3{
+    font-family:var(--font-display); font-size:14px; font-weight:600;
+    color:var(--pine); margin:0 0 4px; display:flex; align-items:center; gap:6px;
+  }
+  .policy-section h3 .num{
+    font-family:var(--font-mono); font-size:11px; color:var(--brass);
+  }
+  .policy-desc{font-size:12.5px; color:#5A625C; line-height:1.6; margin-bottom:10px;}
+  .data-table{width:100%; border-collapse:collapse; font-size:11.5px; margin-bottom:6px;}
+  .data-table th{
+    text-align:left; font-family:var(--font-mono); font-weight:500; font-size:10.5px;
+    color:var(--sage); padding:6px 6px; border-bottom:1.5px solid var(--pine);
+    letter-spacing:0.02em;
+  }
+  .data-table td{padding:7px 6px; border-bottom:1px solid var(--line); color:var(--ink);}
+  .data-table tr:last-child td{border-bottom:none;}
+  .mini-list{font-size:12px; line-height:1.7; color:var(--ink); padding-left:18px; margin:6px 0;}
+  .mini-list li{margin-bottom:4px;}
+  .sub-label{
+    font-family:var(--font-mono); font-size:10.5px; color:var(--brass);
+    margin:10px 0 4px; letter-spacing:0.02em;
+  }
 </style>
 </head>
 <body>
@@ -235,7 +264,7 @@
   </div>
   <div class="detail-body">
     <div class="placeholder">
-      <div class="ph-icon" id="detailIcon">📄</div>
+      <div class="ph-icon" id="detailIcon2">📄</div>
       <div class="ph-title">內容準備中</div>
       <div class="ph-desc">這一區的框架已經完成，之後把實際內容放進這裡即可上線，不用重做頁面結構。</div>
     </div>
@@ -259,10 +288,214 @@
   }
   initLiff();
 
-  // ---- 分類頁切換（先用同一個殼顯示「內容準備中」，之後每個分類可各自換成真實內容）----
+  // ---- 分類頁切換 ----
+  const PLACEHOLDER_HTML = `
+    <div class="placeholder">
+      <div class="ph-icon" id="detailIcon2">📄</div>
+      <div class="ph-title">內容準備中</div>
+      <div class="ph-desc">這一區的框架已經完成，之後把實際內容放進這裡即可上線，不用重做頁面結構。</div>
+    </div>`;
+
+  const POLICY_HTML = `
+    <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容，屬 BA 專屬資訊，請勿轉發給一般消費會員。產品名稱如與紙本文件有出入，請以公司正式文件為準（部分品名於掃描辨識時可能有誤植，待人工校對）。</div>
+
+    <div class="policy-section">
+      <h3><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
+      <div class="policy-desc">經銷商及品牌大使可從客戶每次購買產品中獲得下表之收入，最快可於下一個工作日取得。</div>
+      <table class="data-table">
+        <tr><th>產品</th><th>零售價</th><th>客戶收入</th><th>CV</th></tr>
+        <tr><td>馬啦茯</td><td>4,480元</td><td>1,067元</td><td>30</td></tr>
+        <tr><td>遠絡軟</td><td>2,508元</td><td>597元</td><td>15</td></tr>
+        <tr><td>維德膠原食品</td><td>2,916元</td><td>694元</td><td>17</td></tr>
+        <tr><td>莉莎精華液</td><td>5,093元</td><td>1,213元</td><td>35</td></tr>
+        <tr><td>潔潤洗面乳</td><td>2,167元</td><td>516元</td><td>15</td></tr>
+        <tr><td>煥采化妝水</td><td>1,679元</td><td>400元</td><td>10</td></tr>
+        <tr><td>香華保濕霜</td><td>4,275元</td><td>1,018元</td><td>30</td></tr>
+        <tr><td>莉莎套裝</td><td>12,575元</td><td>2,995元</td><td>90</td></tr>
+      </table>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">02</span> 產品推薦收入 PIB（每週支付）</h3>
+      <div class="policy-desc">活躍的品牌大使將從新推薦的品牌大使第一筆繳費訂單中獲得產品推薦收入。</div>
+      <table class="data-table">
+        <tr><th>套裝</th><th>PIB</th><th>套裝價</th><th>CV</th></tr>
+        <tr><td>典藏尊享套組</td><td>$12,000</td><td>$94,500</td><td>1,500</td></tr>
+        <tr><td>尊享全方位品牌套組</td><td>$6,450</td><td>$47,800</td><td>700</td></tr>
+        <tr><td>品牌管理輔助套組</td><td>$6,450</td><td>$47,800</td><td>700</td></tr>
+        <tr><td>尊享全方位套組</td><td>$3,600</td><td>$22,220</td><td>300</td></tr>
+        <tr><td>尊享套組</td><td>$900</td><td>$11,200</td><td>150</td></tr>
+        <tr><td>入門套組</td><td>$500</td><td>$6,660</td><td>100</td></tr>
+        <tr><td>莉莎精選套組</td><td>$1,200</td><td>$10,800</td><td>170</td></tr>
+      </table>
+      <div class="policy-desc">自選套裝的產品推薦收入基於套裝總CV的百分比：20–199CV=25%；200–299CV=28%；300+CV=33%。</div>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">03</span> 消費積分收入（碰局收入，每週支付）</h3>
+      <div class="policy-desc">帳戶活躍的合格品牌大使適用。最低積分要求：小區300CV，大區600CV。團隊累積到300/600CV時，可獲得1,050元碰局收入。</div>
+      <div class="sub-label">每週碰局上限</div>
+      <ul class="mini-list">
+        <li>基本上限為每週最多500個碰局</li>
+        <li>符合以下四條件，上限可增加至每週600個碰局（當週支付級別需為三星或以上）：
+          <ul class="mini-list">
+            <li>過去4週滾動週期內擁有3條帶三星精英的直推線</li>
+            <li>前一週已達到上限500個碰局</li>
+            <li>擁有10位以上個人推薦客戶／品牌大使（4週滾動週期內）</li>
+            <li>從這些客戶／品牌大使累積1,000CV（含個人訂單，最多200CV）</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">04</span> 級別表（資格條件）</h3>
+      <table class="data-table">
+        <tr><th>級別</th><th>資格條件</th></tr>
+        <tr><td>經銷商</td><td>支付後臺管理費、簽署合約，可購買客戶收入商品</td></tr>
+        <tr><td>品牌大使</td><td>過去52週內從個人/客戶訂單賺取100PV</td></tr>
+        <tr><td>合格品牌大使</td><td>左右區各直推1名品牌大使</td></tr>
+        <tr><td>一星</td><td>52週內累積800PGV（每線最多300PGV），左右區各≥300PGV</td></tr>
+        <tr><td>二星</td><td>52週內累積1,200PGV，左右區各≥400PGV</td></tr>
+        <tr><td>三星</td><td>52週內累積3,600PGV，左右區各≥900PGV</td></tr>
+        <tr><td>三星專家</td><td>4週內產生50個碰局</td></tr>
+        <tr><td>三星精英</td><td>4週內產生100個碰局</td></tr>
+        <tr><td>四星總裁</td><td>活躍度120PV，4週產生200碰局，2條三星直推線</td></tr>
+        <tr><td>五星總裁</td><td>活躍度120PV，4週產生500碰局，4條三星直推線</td></tr>
+        <tr><td>六星總裁</td><td>活躍度120PV，4週產生1,000碰局，6條三星直推線</td></tr>
+        <tr><td>七星總裁</td><td>活躍度120PV，4週產生1,500碰局，2條六星直推線</td></tr>
+        <tr><td>黃金鑽石</td><td>活躍度120PV，累積4,000,000PGV，2條六星直推線</td></tr>
+        <tr><td>皇冠鑽石</td><td>活躍度120PV，累積6,000,000PGV，6條六星直推線</td></tr>
+        <tr><td>皇家皇冠鑽石</td><td>活躍度120PV，累積8,000,000PGV，8條六星直推線</td></tr>
+      </table>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">05</span> 團隊管理收入（每週支付）</h3>
+      <div class="policy-desc">一星至三星精英活躍度需≥60PV；四星以上活躍度需≥120PV。收入為1,050元消費積分碰局收入之對應百分比：</div>
+      <table class="data-table">
+        <tr><th>級別</th><th>百分比累加</th></tr>
+        <tr><td>一星</td><td>L1-20%</td></tr>
+        <tr><td>二星</td><td>L1-20% + L2-15%</td></tr>
+        <tr><td>三星</td><td>+ L3-10%</td></tr>
+        <tr><td>四星總裁</td><td>+ L4-5%</td></tr>
+        <tr><td>五星總裁</td><td>+ L5-5%</td></tr>
+        <tr><td>六星總裁</td><td>+ L6-5%</td></tr>
+        <tr><td>七星總裁</td><td>+ L7-5%</td></tr>
+      </table>
+      <div class="policy-desc"><strong>L1百分比提升規則：</strong>當滿足以下條件時，L1團隊管理收入的百分比將從20%增加到30%——擁有10位或更多活躍的個人推薦客戶和/或品牌大使，並在為期4週的滾動週期內，從這些客戶/品牌大使那裡累積1,000CV（原文數字OCR辨識有落差，請以正式文件核對），包括個人訂單（最多200CV）。<br><em>例如：若您有15位客戶/品牌大使，每位產生60CV（總共900CV），再加上您100CV的個人後臺訂單，總計1,000CV。</em><br>注意：所有團隊管理收入均按每個碰局1,050元計算。</div>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">06</span> 全球領導分紅收入（全球CV的3%，每週支付）</h3>
+      <div class="policy-desc">資格：須為四星總裁以上、活躍度120PV，且擁有5位活躍個人推薦客戶/品牌大使，4週內累積300CV。</div>
+      <div class="sub-label">個人支付星等積分</div>
+      <ul class="mini-list">
+        <li>四星總裁＝1分／五星總裁＝2分／六星總裁＝3分／七星以上＝4分</li>
+      </ul>
+      <div class="sub-label">個人組織積分</div>
+      <ul class="mini-list">
+        <li>每條四星直推線＝1分／五星＝2分／六星＝3分／七星＝4分</li>
+        <li>每累積1,000 PGV可再獲得1分（取直推線最高支付級別計算）</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">07</span> 級別晉升獎金（每週支付，一次性）</h3>
+      <table class="data-table">
+        <tr><th>級別</th><th>獎勵禮券¹</th><th>代幣金額²</th><th>一次性現金</th></tr>
+        <tr><td>一星</td><td>$3,000</td><td>—</td><td>—</td></tr>
+        <tr><td>二星</td><td>$6,000</td><td>—</td><td>—</td></tr>
+        <tr><td>三星</td><td>$9,000</td><td>—</td><td>—</td></tr>
+        <tr><td>三星專家</td><td>$9,000</td><td>$3,000</td><td>—</td></tr>
+        <tr><td>三星精英</td><td>—</td><td>$15,000</td><td>—</td></tr>
+        <tr><td>四星總裁</td><td>—</td><td>$30,000</td><td>—</td></tr>
+        <tr><td>五星總裁</td><td>—</td><td>$60,000</td><td>—</td></tr>
+        <tr><td>六星總裁</td><td>—</td><td>$120,000</td><td>—</td></tr>
+        <tr><td>七星總裁</td><td>—</td><td>$150,000</td><td>—</td></tr>
+        <tr><td>黃金鑽石</td><td>—</td><td>—</td><td>$1,500,000</td></tr>
+        <tr><td>皇冠鑽石</td><td>—</td><td>—</td><td>$3,000,000</td></tr>
+        <tr><td>皇家皇冠鑽石</td><td>—</td><td>—</td><td>$7,500,000</td></tr>
+      </table>
+      <div class="policy-desc">¹ 獎勵禮券不會產生獎金和CV，有效期為6個月。<br>² 代幣最多能支付每筆訂單產品購買價格的50%，有效期為6個月。</div>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">08</span> 獎勵活動</h3>
+      <div class="sub-label">快樂10</div>
+      <ul class="mini-list">
+        <li>每有10位新客戶或新經銷商（兩者也可結合）購買產品，推薦人即可獲得一張價值3,000元的獎勵禮券，可重複獲得</li>
+      </ul>
+      <div class="sub-label">忠誠計畫－品牌大使</div>
+      <ul class="mini-list">
+        <li>當經銷商/品牌大使連續訂購6個不低於60CV的智慧發貨訂單，即可獲得3,000元的獎勵禮券，可重複獲得</li>
+      </ul>
+      <div class="sub-label">忠誠計畫－客戶</div>
+      <ul class="mini-list">
+        <li>每消費9,000元，客戶將獲得900元的獎勵禮券，可用於購買單品，於未來購物中節省資金</li>
+        <li>通過推薦獲得禮券：作為客戶，每次推薦其他新客戶購買第一筆訂單時，您都會獲得300元的獎勵禮券</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h3><span class="num">09</span> 術語表</h3>
+      <table class="data-table">
+        <tr><th>名詞</th><th>說明</th></tr>
+        <tr><td>個人積分(PV)</td><td>個人和客戶消費所產生的積分，用於確定帳戶活躍狀態</td></tr>
+        <tr><td>個人團隊積分(PGV)</td><td>來自直推線以及客戶消費所產生的積分</td></tr>
+        <tr><td>雙區積分(BV)</td><td>一定時間內來自左區和右區兩區的積分總和</td></tr>
+        <tr><td>傭金積分(CV)</td><td>每個產品所分配的積分數值，為每筆訂單積分加總</td></tr>
+        <tr><td>小區積分(LLV)</td><td>一定時間內來自小區（積分較少分區）的傭金積分總和</td></tr>
+        <tr><td>大區積分(GLV)</td><td>一定時間內來自大區（積分較多分區）的傭金積分總和</td></tr>
+        <tr><td>上屬安置(Spillover)</td><td>共用雙區的上屬將品牌大使置於您的團隊中，其銷售額計入您的總團隊積分</td></tr>
+        <tr><td>最高級別</td><td>品牌大使在任何獎金週期間獲得的最高級別</td></tr>
+        <tr><td>支付級別</td><td>品牌大使在指定獎金週期間所被支付的級別</td></tr>
+        <tr><td>個人組織</td><td>每一條直推線上的品牌大使們組成您的個人組織</td></tr>
+        <tr><td>獎金週</td><td>始於每週一凌晨12點，結束於週日晚上11:59（美國山地時間）</td></tr>
+        <tr><td>活躍</td><td>每28天至少擁有60PV個人積分，即為活躍品牌大使</td></tr>
+        <tr><td>活躍狀態週期</td><td>當前獎金週及前3個完整獎金週，共4個完整獎金週，用於確定活躍狀態、計算晉升與獎金支付</td></tr>
+        <tr><td>智慧發貨</td><td>每28天自動生成的訂單，有助於保持帳戶活躍狀態</td></tr>
+        <tr><td>客戶積分(CV)規則</td><td>客戶置於雙區中，客戶訂單CV會減少；客戶訂單積分計入推薦人帳戶的活躍狀態</td></tr>
+      </table>
+      <div class="policy-desc" style="margin-top:10px;"><strong>傭金上限：</strong>公司支付的最高傭金上限為全球CV的60%。所有傭金、獎金和支付將根據上限進行發放比例調整，將優先調整全球領導分紅收入之發放比例。</div>
+    </div>
+  `;
+
+  const CALENDAR_HTML = `
+    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📅 台灣思睿健康 行動月曆－2026年8月</div>
+
+    <div class="policy-section">
+      <table class="data-table">
+        <tr><th>日期</th><th>活動</th><th>時間</th><th>類別</th></tr>
+        <tr><td>8/1（六）</td><td>台灣思睿一週年慶</td><td>13:00–16:00</td><td>台北辦公室</td></tr>
+        <tr><td>8/5（三）</td><td>台北辦公室 Social Media</td><td>19:00–21:00</td><td>台北辦公室</td></tr>
+        <tr><td>8/6（四）</td><td>產品線上分享會</td><td>20:00–20:30</td><td>線上講座</td></tr>
+        <tr><td>8/8（六）</td><td>父親節（休）</td><td>—</td><td>—</td></tr>
+        <tr><td>8/12（三）</td><td>健康素養（台北）</td><td>19:00–20:30</td><td>台北辦公室</td></tr>
+        <tr><td>8/12（三）</td><td>Social Media（高雄）</td><td>18:30–20:30</td><td>高雄訓練中心</td></tr>
+        <tr><td>8/15（六）</td><td>嘟嘟好派對（台北）</td><td>14:30–17:00</td><td>台北線下活動</td></tr>
+        <tr><td>8/15（六）</td><td>嘟嘟好見面會（高雄）</td><td>10:00–16:00</td><td>高雄線下活動</td></tr>
+        <tr><td>8/19（三）</td><td>台北辦公室 Social Media</td><td>19:00–21:00</td><td>台北辦公室</td></tr>
+        <tr><td>8/27（四）</td><td>健康講座：告別短期減重，建立終身代謝</td><td>20:00–20:30</td><td>線上講座</td></tr>
+      </table>
+      <div class="policy-desc" style="margin-top:10px;">
+        <strong>台北辦公室地址：</strong>台北市松山區敦化北路167號4樓C室<br>
+        <strong>高雄訓練中心地址：</strong>高雄市前鎮區中山二路2號16樓之8
+      </div>
+    </div>
+  `;
+
   function openDetail(id, title, icon){
     document.getElementById('detailTitle').textContent = title;
-    document.getElementById('detailIcon').textContent = icon;
+    const body = document.querySelector('#detailView .detail-body');
+    if (id === 'policy') {
+      body.innerHTML = POLICY_HTML;
+    } else if (id === 'calendar') {
+      body.innerHTML = CALENDAR_HTML;
+    } else {
+      body.innerHTML = PLACEHOLDER_HTML;
+      document.getElementById('detailIcon2').textContent = icon;
+    }
     document.getElementById('detailView').classList.add('open');
   }
   function closeDetail(){
