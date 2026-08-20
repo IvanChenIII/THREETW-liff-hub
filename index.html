@@ -213,6 +213,24 @@
   }
   .pack-card img{width:100%; border-radius:8px; margin-bottom:8px; display:block; background:var(--sage-pale);}
   .pack-card.gold{border-color:var(--brass);}
+
+  .prod-grid{display:flex; flex-direction:column; gap:10px;}
+  .prod-mini{
+    display:flex; align-items:center; gap:12px; padding:10px;
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    cursor:pointer; text-decoration:none; color:inherit;
+  }
+  .prod-mini img{width:58px; height:58px; object-fit:cover; border-radius:10px; flex-shrink:0; background:var(--sage-pale);}
+  .prod-mini .prod-mini-text{flex:1;}
+  .prod-mini .prod-mini-title{font-family:var(--font-display); font-weight:600; font-size:13px; color:var(--ink);}
+  .prod-mini .prod-mini-sub{font-size:11px; color:#6B7570; margin-top:2px;}
+  .prod-back{
+    display:inline-flex; align-items:center; gap:4px; font-family:var(--font-mono);
+    font-size:11px; color:var(--sage); margin-bottom:14px; cursor:pointer;
+  }
+  .prod-detail-header{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .prod-detail-header img{width:64px; height:64px; object-fit:cover; border-radius:12px; flex-shrink:0;}
+  .prod-detail-header .prod-detail-name{font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--pine);}
   .bar-chart{margin:14px 0 4px;}
   .bar-row{display:flex; align-items:center; gap:8px; margin-bottom:7px;}
   .bar-label{width:76px; flex-shrink:0; font-size:11px; color:var(--ink); text-align:right;}
@@ -698,13 +716,11 @@
     </div>
   `;
 
-  const PRODUCTS_HTML = `
-    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">✨ Visage 保養系列－資料來源：官方產品資料概要</div>
-
-    <div class="policy-section">
-      <div class="pack-card">
-        <img src="https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp" alt="Visage Pure Cleanse 淨潤洗面乳">
-        <div class="tier-name" style="width:auto; font-size:14px;">Visage Pure Cleanse｜淨潤洗面乳</div>
+  const PRODUCT_DETAILS = {
+    cleanse: {
+      name: "Visage Pure Cleanse｜淨潤洗面乳",
+      img: "https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp",
+      html: `
         <div class="sub-label">主要功效</div>
         <ul class="mini-list">
           <li>有效清潔臉部雜質、妝容及防曬產品，保持天然油脂不流失</li>
@@ -721,11 +737,12 @@
         </ul>
         <div class="sub-label">建議用法</div>
         <div class="tier-cond">將適量產品塗抹於濕潤的臉部和頸部，輕柔按摩後徹底沖洗乾淨，輕拍乾後再使用 Visage Radiant Toner。</div>
-      </div>
-
-      <div class="pack-card">
-        <img src="https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp" alt="Visage Radiant Toner 煥采化妝水">
-        <div class="tier-name" style="width:auto; font-size:14px;">Visage Radiant Toner｜煥采化妝水</div>
+      `
+    },
+    toner: {
+      name: "Visage Radiant Toner｜煥采化妝水",
+      img: "https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp",
+      html: `
         <div class="sub-label">主要功效</div>
         <ul class="mini-list">
           <li>幫助維持潔膚後肌膚穩定，保護天然pH值平衡</li>
@@ -742,11 +759,12 @@
         </ul>
         <div class="sub-label">建議用法</div>
         <div class="tier-cond">將瓶身與臉部保持適當距離，閉眼後均勻噴於潔淨肌膚上，充分吸收後再塗抹 Visage Super Serum。早晚使用。</div>
-      </div>
-
-      <div class="pack-card">
-        <img src="https://wall.threeinternational.com/hubfs/sku-serum-lg-638725633674569247.webp" alt="Visage Super Serum 極致精華液">
-        <div class="tier-name" style="width:auto; font-size:14px;">Visage Super Serum｜極致精華液</div>
+      `
+    },
+    serum: {
+      name: "Visage Super Serum｜極致精華液",
+      img: "https://wall.threeinternational.com/hubfs/sku-serum-lg-638725633674569247.webp",
+      html: `
         <div class="sub-label">主要功效</div>
         <ul class="mini-list">
           <li>皺紋和表情紋的減少效果顯著</li>
@@ -764,11 +782,12 @@
         </ul>
         <div class="sub-label">建議用法</div>
         <div class="tier-cond">取1-2次按壓的量均勻塗抹於潔淨臉部和頸部，再進行保濕護理。早晚使用。</div>
-      </div>
-
-      <div class="pack-card gold">
-        <img src="https://wall.threeinternational.com/hubfs/creme-caviar-web-image.jpg" alt="Visage Crème Caviar 奢華保濕霜">
-        <div class="tier-name" style="width:auto; font-size:14px;">Visage Crème Caviar｜奢華保濕霜</div>
+      `
+    },
+    creme: {
+      name: "Visage Crème Caviar｜奢華保濕霜",
+      img: "https://wall.threeinternational.com/hubfs/creme-caviar-web-image.jpg",
+      html: `
         <div class="sub-label">主要功效</div>
         <ul class="mini-list">
           <li>減少環境壓力、歲月痕跡與疲勞帶來的可見影響</li>
@@ -786,9 +805,54 @@
         </ul>
         <div class="sub-label">建議用法</div>
         <div class="tier-cond">取適量（約珍珠大小）塗抹於已使用化妝水的潔淨肌膚上，以指腹輕柔向上按摩臉頸。早晚使用，作為Visage護膚程序的最後一步。</div>
+      `
+    }
+  };
+
+  function productListHTML(){
+    return `
+      <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">✨ Visage 保養系列－點選產品查看完整介紹</div>
+      <div class="prod-grid">
+        <div class="prod-mini" onclick="showProductDetail('cleanse')">
+          <img src="${PRODUCT_DETAILS.cleanse.img}" alt="淨潤洗面乳">
+          <div class="prod-mini-text"><div class="prod-mini-title">Visage Pure Cleanse</div><div class="prod-mini-sub">淨潤洗面乳</div></div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="prod-mini" onclick="showProductDetail('toner')">
+          <img src="${PRODUCT_DETAILS.toner.img}" alt="煥采化妝水">
+          <div class="prod-mini-text"><div class="prod-mini-title">Visage Radiant Toner</div><div class="prod-mini-sub">煥采化妝水</div></div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="prod-mini" onclick="showProductDetail('serum')">
+          <img src="${PRODUCT_DETAILS.serum.img}" alt="極致精華液">
+          <div class="prod-mini-text"><div class="prod-mini-title">Visage Super Serum</div><div class="prod-mini-sub">極致精華液</div></div>
+          <div class="chevron">›</div>
+        </div>
+        <div class="prod-mini" onclick="showProductDetail('creme')">
+          <img src="${PRODUCT_DETAILS.creme.img}" alt="奢華保濕霜">
+          <div class="prod-mini-text"><div class="prod-mini-title">Visage Crème Caviar</div><div class="prod-mini-sub">奢華保濕霜</div></div>
+          <div class="chevron">›</div>
+        </div>
       </div>
-    </div>
-  `;
+    `;
+  }
+
+  function showProductDetail(key){
+    const p = PRODUCT_DETAILS[key];
+    const body = document.querySelector('#detailView .detail-body');
+    body.innerHTML = `
+      <div class="prod-back" onclick="body_backToProductList()">‹ 返回產品列表</div>
+      <div class="prod-detail-header">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="prod-detail-name">${p.name}</div>
+      </div>
+      ${p.html}
+    `;
+  }
+
+  function body_backToProductList(){
+    document.querySelector('#detailView .detail-body').innerHTML = productListHTML();
+  }
 
   function openDetail(id, title, icon){
     document.getElementById('detailTitle').textContent = title;
@@ -802,7 +866,7 @@
     } else if (id === 'campaigns') {
       body.innerHTML = CAMPAIGNS_HTML;
     } else if (id === 'products') {
-      body.innerHTML = PRODUCTS_HTML;
+      body.innerHTML = productListHTML();
     } else {
       body.innerHTML = PLACEHOLDER_HTML;
       document.getElementById('detailIcon2').textContent = icon;
