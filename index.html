@@ -244,6 +244,211 @@
     display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
   .link-card .link-icon svg{width:19px; height:19px; stroke:var(--pine); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
+
+  /* ===== AI Chat Widget ===== */
+  .ai-chat-box{
+    background:var(--white); border:1.5px solid var(--sage-pale); border-radius:16px;
+    padding:14px; margin-bottom:22px;
+  }
+  .ai-chat-title{
+    display:flex; align-items:center; gap:8px; font-family:var(--font-display);
+    font-weight:700; font-size:13.5px; color:var(--pine); margin-bottom:10px;
+  }
+  .ai-chat-title svg{width:18px; height:18px; stroke:var(--pine); fill:none; stroke-width:1.8;}
+  .ai-chat-messages{
+    display:flex; flex-direction:column; gap:8px; margin-bottom:10px;
+    max-height:280px; overflow-y:auto;
+  }
+  .ai-msg{padding:9px 12px; border-radius:12px; font-size:12.5px; line-height:1.6; max-width:88%;}
+  .ai-msg.user{background:var(--pine); color:var(--white); align-self:flex-end; border-bottom-right-radius:3px;}
+  .ai-msg.bot{background:var(--sage-pale); color:var(--ink); align-self:flex-start; border-bottom-left-radius:3px; white-space:pre-wrap;}
+  .ai-msg.bot.loading{color:#8A928C; font-style:italic;}
+  .ai-chat-input-row{display:flex; gap:8px;}
+  .ai-chat-input{
+    flex:1; border:1px solid var(--line); border-radius:20px; padding:9px 14px;
+    font-size:12.5px; font-family:var(--font-body); outline:none;
+  }
+  .ai-chat-input:focus{border-color:var(--sage);}
+  .ai-chat-send{
+    background:var(--pine); color:var(--white); border:none; border-radius:50%;
+    width:36px; height:36px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .ai-chat-send:disabled{opacity:0.5;}
+  .ai-chat-hint{font-size:10.5px; color:#8A928C; margin-top:8px; text-align:center;}
+
+  /* ===== Check-in / Garden ===== */
+  .garden-box{
+    background:linear-gradient(180deg, var(--sage-pale), var(--white));
+    border-radius:20px; padding:20px 16px 16px; margin-bottom:16px; position:relative;
+  }
+  .garden-streak{text-align:center; margin-bottom:14px;}
+  .garden-streak .streak-num{font-family:var(--font-display); font-size:34px; font-weight:700; color:var(--pine);}
+  .garden-streak .streak-label{font-size:11px; color:#6B7570; margin-top:2px;}
+  .garden-pot-wrap{position:relative; width:220px; height:220px; margin:0 auto 14px; display:flex; align-items:center; justify-content:center;}
+  .garden-pot-wrap img{max-width:100%; max-height:100%;}
+  .garden-pot-emoji{animation:potSway 4s ease-in-out infinite; transform-origin:bottom center; display:inline-block;}
+  @keyframes potSway{
+    0%,100%{transform:rotate(-2deg);}
+    50%{transform:rotate(2deg);}
+  }
+  .fruit-slot{
+    position:absolute; width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:transform .15s ease;
+  }
+  .fruit-slot:active{transform:scale(0.9);}
+  .fruit-slot.locked{background:rgba(0,0,0,0.06); opacity:0.5; cursor:default;}
+  .fruit-slot.ready{background:#E85D5D; box-shadow:0 0 0 4px rgba(232,93,93,0.25); animation:fruitPop .5s cubic-bezier(.34,1.56,.64,1) both, fruitPulse 1.6s ease-in-out 0.5s infinite;}
+  .fruit-slot.claimed{background:var(--sage-pale); opacity:0.6; cursor:default;}
+  .fruit-slot.big{width:50px; height:50px; background:var(--brass); box-shadow:0 0 0 5px rgba(227,168,87,0.3);}
+  .fruit-slot svg{width:18px; height:18px; stroke:white; fill:none; stroke-width:2;}
+  @keyframes fruitPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  @keyframes fruitPop{
+    0%{transform:scale(0); opacity:0;}
+    60%{transform:scale(1.25); opacity:1;}
+    100%{transform:scale(1);}
+  }
+  .fruit-slot.shaking{animation:fruitShake .4s ease !important;}
+  @keyframes fruitShake{
+    0%,100%{transform:rotate(0) scale(1);}
+    25%{transform:rotate(-15deg) scale(1.1);}
+    50%{transform:rotate(15deg) scale(1.15);}
+    75%{transform:rotate(-10deg) scale(1.1);}
+  }
+  .checkin-btn{
+    display:block; width:100%; background:var(--pine); color:white; border:none;
+    border-radius:14px; padding:14px; font-family:var(--font-display); font-weight:700;
+    font-size:14px; cursor:pointer; margin-bottom:8px;
+  }
+  .checkin-btn:disabled{background:#B8C0BC; cursor:default;}
+
+  .like-checkin-wrap{display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:10px;}
+  .like-checkin-btn{
+    width:64px; height:64px; border-radius:50%; border:2px solid var(--pine);
+    background:var(--white); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; position:relative; transition:transform .12s ease;
+  }
+  .like-checkin-btn svg{width:28px; height:28px; stroke:var(--pine); fill:none; stroke-width:1.8; transition:all .2s ease;}
+  .like-checkin-btn:active{transform:scale(0.88);}
+  .like-checkin-btn.liked{
+    background:var(--pine); border-color:var(--pine);
+    animation:likeBounce .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .like-checkin-btn.liked svg{stroke:white; fill:white;}
+  .like-checkin-btn:disabled{cursor:default;}
+  @keyframes likeBounce{
+    0%{transform:scale(1);}
+    35%{transform:scale(1.35);}
+    60%{transform:scale(0.92);}
+    100%{transform:scale(1);}
+  }
+  .like-checkin-label{font-size:11.5px; color:#6B7570; font-family:var(--font-display); font-weight:600;}
+  .like-burst{
+    position:absolute; inset:-14px; pointer-events:none;
+  }
+  .like-burst span{
+    position:absolute; top:50%; left:50%; width:5px; height:5px; border-radius:50%;
+    background:var(--brass); opacity:0;
+  }
+  .like-checkin-btn.liked .like-burst span{animation:burstOut .55s ease-out both;}
+  @keyframes burstOut{
+    0%{opacity:1; transform:translate(-50%,-50%) scale(1);}
+    100%{opacity:0; transform:translate(-50%,-50%) scale(1) var(--burst-move);}
+  }
+  .like-burst span:nth-child(1){--burst-move:translate(0,-26px);}
+  .like-burst span:nth-child(2){--burst-move:translate(18px,-18px);}
+  .like-burst span:nth-child(3){--burst-move:translate(26px,0);}
+  .like-burst span:nth-child(4){--burst-move:translate(18px,18px);}
+  .like-burst span:nth-child(5){--burst-move:translate(0,26px);}
+  .like-burst span:nth-child(6){--burst-move:translate(-18px,18px);}
+  .like-burst span:nth-child(7){--burst-move:translate(-26px,0);}
+  .like-burst span:nth-child(8){--burst-move:translate(-18px,-18px);}
+  .garden-hint{font-size:11px; color:#8A928C; text-align:center;}
+  .milestone-list{display:flex; flex-direction:column; gap:8px; margin-top:16px;}
+  .milestone-row{
+    display:flex; align-items:center; gap:10px; padding:10px 12px;
+    background:var(--white); border:1px solid var(--line); border-radius:12px;
+  }
+  .milestone-row.done{background:var(--sage-pale);}
+  .milestone-dot{width:8px; height:8px; border-radius:50%; background:var(--line); flex-shrink:0;}
+  .milestone-row.done .milestone-dot{background:var(--sage);}
+  .milestone-text{flex:1; font-size:12px; color:var(--ink);}
+  .milestone-status{font-family:var(--font-mono); font-size:10.5px; color:#8A928C;}
+  /* reveal modal */
+  .reveal-overlay{
+    position:fixed; inset:0; background:rgba(26,39,51,0.55); z-index:80;
+    display:none; align-items:center; justify-content:center; padding:30px;
+    opacity:0; transition:opacity .2s ease;
+  }
+  .reveal-overlay.open{display:flex; opacity:1;}
+  .reveal-card{
+    background:white; border-radius:20px; padding:28px 22px; text-align:center; max-width:300px;
+    position:relative; overflow:visible;
+    animation:revealPop .45s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes revealPop{
+    0%{transform:scale(0.4) translateY(30px); opacity:0;}
+    100%{transform:scale(1) translateY(0); opacity:1;}
+  }
+  .reveal-card .reveal-icon{font-size:40px; margin-bottom:10px; display:inline-block; animation:iconBounce .6s ease .2s both;}
+  @keyframes iconBounce{
+    0%{transform:scale(0) rotate(-20deg);}
+    60%{transform:scale(1.3) rotate(10deg);}
+    100%{transform:scale(1) rotate(0);}
+  }
+  .reveal-card .reveal-title{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--pine); margin-bottom:6px;}
+  .reveal-card .reveal-desc{font-size:12.5px; color:#5A625C; margin-bottom:18px; line-height:1.6;}
+  .reveal-card button{
+    background:var(--pine); color:white; border:none; border-radius:12px;
+    padding:10px 24px; font-family:var(--font-display); font-weight:600; font-size:13px; cursor:pointer;
+  }
+  .confetti-piece{
+    position:absolute; top:-10px; width:8px; height:8px; opacity:0.9;
+    animation:confettiFall 1.6s ease-in forwards;
+  }
+  @keyframes confettiFall{
+    0%{transform:translateY(0) rotate(0); opacity:1;}
+    100%{transform:translateY(340px) rotate(540deg); opacity:0;}
+  }
+
+  /* watering animation */
+  .watering-can{
+    position:absolute; top:-6px; right:8px; font-size:34px;
+    transform-origin:80% 90%; opacity:0; z-index:5;
+  }
+  .watering-can.pouring{animation:canTilt 1s ease both;}
+  @keyframes canTilt{
+    0%{opacity:0; transform:rotate(0) translate(20px,-10px);}
+    20%{opacity:1; transform:rotate(-35deg) translate(0,0);}
+    75%{opacity:1; transform:rotate(-35deg) translate(0,0);}
+    100%{opacity:0; transform:rotate(0) translate(20px,-10px);}
+  }
+  .water-drop{
+    position:absolute; top:14px; right:34px; width:5px; height:9px;
+    background:#7FC4E8; border-radius:50% 50% 50% 0; transform:rotate(45deg);
+    opacity:0;
+  }
+  .water-drop.falling{animation:dropFall .55s ease-in forwards;}
+  @keyframes dropFall{
+    0%{opacity:0; transform:translateY(0) rotate(45deg);}
+    15%{opacity:1;}
+    100%{opacity:0; transform:translateY(75px) rotate(45deg);}
+  }
+  .garden-pot-emoji.splash{animation:potSway 4s ease-in-out infinite, potSplash .4s ease .5s;}
+  @keyframes potSplash{
+    0%,100%{transform:scale(1);}
+    40%{transform:scale(1.08);}
+  }
+  .water-sparkle{
+    position:absolute; font-size:14px; opacity:0; pointer-events:none;
+  }
+  .water-sparkle.show{animation:sparklePop .7s ease .6s both;}
+  @keyframes sparklePop{
+    0%{opacity:0; transform:scale(0) translateY(0);}
+    40%{opacity:1; transform:scale(1.2) translateY(-8px);}
+    100%{opacity:0; transform:scale(0.8) translateY(-20px);}
+  }
   .link-card .link-text{flex:1;}
   .link-card .link-title{font-family:var(--font-display); font-weight:600; font-size:13.5px; color:var(--ink);}
   .link-card .link-sub{font-size:11px; color:#6B7570; margin-top:1px;}
@@ -322,16 +527,16 @@
         <div class="spot-arrow">›</div>
       </a>
 
-      <div class="spot-card gold disabled">
+      <a class="spot-card gold" href="#" onclick="openDetail('checkin','打卡集點','⭐');return false;">
         <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></div>
-        <div class="spot-text"><div class="spot-title">打卡集點 <span class="spot-badge">敬請期待</span></div><div class="spot-desc">下一階段規劃中</div></div>
+        <div class="spot-text"><div class="spot-title">打卡集點</div><div class="spot-desc">每日打卡，養出你的產品盆栽</div></div>
         <div class="spot-arrow">›</div>
-      </div>
+      </a>
     </div>
 
   </main>
 
-  <footer>THREE TAIWAN · 一點通 v0.1</footer>
+  <footer>THREE TAIWAN · 小幫手 v0.1</footer>
 </div>
 
 <!-- ===== Detail Overlay (reused for every section) ===== -->
@@ -360,6 +565,7 @@
       if (liff.isLoggedIn()) {
         liff.getProfile().then(profile => {
           document.getElementById('greetingText').textContent = profile.displayName + "，您好";
+          liffUserId = profile.userId;
         }).catch(()=>{});
       }
     }).catch(err => console.error("LIFF init failed", err));
@@ -371,10 +577,25 @@
     <div class="placeholder">
       <div class="ph-icon" id="detailIcon2">📄</div>
       <div class="ph-title">內容準備中</div>
+      <div class="ph-desc">這一區的框架已經完成，之後把實際內容放進這裡即可上線，不用重做頁面結構。</div>
     </div>`;
 
   const POLICY_HTML = `
-    <div class="policy-note"> 本頁僅收錄「獎金制度」相關內容。</div>
+    <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容，屬 BA 專屬資訊，請勿轉發給一般消費會員。</div>
+
+    <div class="ai-chat-box">
+      <div class="ai-chat-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 10a1 1 0 100-2 1 1 0 000 2zM15 10a1 1 0 100-2 1 1 0 000 2zM8 14c1 1.5 2.5 2 4 2s3-.5 4-2"/></svg>AI 問答小幫手</div>
+      <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-msg bot">您好！我是獎金制度小幫手，可以問我關於客戶收入、套裝獎金、級別資格、碰局收入等問題。</div>
+      </div>
+      <div class="ai-chat-input-row">
+        <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="輸入問題，例如：三星要達到什麼條件？" maxlength="200">
+        <button class="ai-chat-send" id="aiChatSend" onclick="sendAiQuestion()">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="white" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="ai-chat-hint">回答僅供參考，正式數字請以官方獎金制度文件為準</div>
+    </div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.5 12.5a2 2 0 002 1.5h8.5a2 2 0 002-1.7L21 7H6"/></svg><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
@@ -553,7 +774,7 @@
   `;
 
   const BUNDLES_HTML = `
-    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📦 官網套組頁面</div>
+    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📦 資料來源：官網套組頁面。註冊成為品牌大使才可購買套組；套組不可放入預付/循環智能出貨訂單。</div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>單項產品</h3>
@@ -885,6 +1106,259 @@
     </div>
   `;
 
+  // ---- AI 問答小幫手 ----
+  const AI_WORKER_URL = "PASTE_YOUR_WORKER_URL_HERE"; // TODO: 換成部署好的Cloudflare Worker網址
+  const CHECKIN_WORKER_URL = "PASTE_YOUR_WORKER_URL_HERE"; // TODO: 同一個Worker網址即可（已整合在同一個後端）
+
+  const MILESTONES = [
+    { key:"week1", days:7,  label:"第7天",  type:"small" },
+    { key:"week2", days:14, label:"第14天", type:"small" },
+    { key:"week3", days:21, label:"第21天", type:"small" },
+    { key:"week4", days:28, label:"第28天", type:"small" },
+    { key:"month", days:30, label:"第30天", type:"big" },
+  ];
+  // 果實在盆栽上的擺放位置（百分比座標，之後你有實際圖片可以再微調）
+  const FRUIT_POS = {
+    week1:{top:'62%', left:'28%'}, week2:{top:'50%', left:'68%'},
+    week3:{top:'38%', left:'32%'}, week4:{top:'28%', left:'62%'},
+    month:{top:'15%', left:'46%'},
+  };
+
+  let gardenState = { streakDays: 0, claimed: {} };
+  let liffUserId = null;
+
+  function checkinHTML(){
+    const fruitsHtml = MILESTONES.map(m => {
+      const pos = FRUIT_POS[m.key];
+      const claimedReward = gardenState.claimed[m.key];
+      let cls = 'locked';
+      if (claimedReward) cls = 'claimed';
+      else if (gardenState.streakDays >= m.days) cls = 'ready';
+      if (m.type === 'big') cls += ' big';
+      const icon = claimedReward
+        ? '<svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg>'
+        : (cls.includes('ready') ? '<svg viewBox="0 0 24 24"><path d="M12 3c1 4-3 5-3 9a3 3 0 006 0c0-4-4-5-3-9z"/></svg>' : '');
+      return `<div class="fruit-slot ${cls}" style="top:${pos.top}; left:${pos.left};" onclick="claimFruit('${m.key}')">${icon}</div>`;
+    }).join('');
+
+    const milestoneRows = MILESTONES.map(m => {
+      const done = !!gardenState.claimed[m.key];
+      const status = done ? gardenState.claimed[m.key] : (gardenState.streakDays >= m.days ? '可開啟' : `尚差${m.days - gardenState.streakDays}天`);
+      return `<div class="milestone-row ${done?'done':''}"><div class="milestone-dot"></div><div class="milestone-text">${m.label}${m.type==='big'?'（滿一個月大獎）':''}</div><div class="milestone-status">${status}</div></div>`;
+    }).join('');
+
+    const alreadyCheckedToday = gardenState.lastCheckinDate === todayStr();
+
+    return `
+      <div class="garden-box">
+        <div class="garden-streak">
+          <div class="streak-num">${gardenState.streakDays}</div>
+          <div class="streak-label">連續打卡天數</div>
+        </div>
+        <div class="garden-pot-wrap" id="gardenPotWrap">
+          <div style="font-size:64px;" class="garden-pot-emoji" id="gardenPotEmoji">🪴</div>
+          <div class="watering-can" id="wateringCan">🪣</div>
+          <div class="water-drop" id="drop1"></div>
+          <div class="water-drop" id="drop2"></div>
+          <div class="water-drop" id="drop3"></div>
+          <div class="water-sparkle" id="sparkle1" style="top:35%; left:38%;">✨</div>
+          <div class="water-sparkle" id="sparkle2" style="top:30%; left:58%;">✨</div>
+          ${fruitsHtml}
+        </div>
+        <div class="like-checkin-wrap">
+          <button class="like-checkin-btn ${alreadyCheckedToday ? 'liked' : ''}" id="checkinBtn" onclick="doCheckin()" ${alreadyCheckedToday ? 'disabled' : ''}>
+            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <div class="like-burst">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </button>
+          <div class="like-checkin-label" id="checkinLabel">${alreadyCheckedToday ? '今天已澆水囉' : '點一下澆水打卡'}</div>
+        </div>
+        <div class="garden-hint">每滿7天長出一顆果實，點擊已成熟的果實開獎</div>
+      </div>
+      <div class="milestone-list">${milestoneRows}</div>
+      <div class="reveal-overlay" id="revealOverlay">
+        <div class="reveal-card">
+          <div class="reveal-icon">🎁</div>
+          <div class="reveal-title" id="revealTitle">恭喜獲得</div>
+          <div class="reveal-desc" id="revealDesc"></div>
+          <button onclick="closeReveal()">太棒了</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function todayStr(){
+    // 台灣時區日期字串 YYYY-MM-DD
+    const d = new Date(new Date().toLocaleString('en-US', {timeZone:'Asia/Taipei'}));
+    return d.toISOString().slice(0,10);
+  }
+
+  async function loadGardenState(){
+    if (!liffUserId || CHECKIN_WORKER_URL === "PASTE_YOUR_WORKER_URL_HERE") return;
+    try {
+      const res = await fetch(`${CHECKIN_WORKER_URL}/state?userId=${liffUserId}`);
+      const data = await res.json();
+      if (data && !data.error) gardenState = data;
+    } catch(e) {}
+  }
+
+  function playWateringAnimation(){
+    return new Promise(resolve => {
+      const can = document.getElementById('wateringCan');
+      const pot = document.getElementById('gardenPotEmoji');
+      const drops = [document.getElementById('drop1'), document.getElementById('drop2'), document.getElementById('drop3')];
+      const sparkles = [document.getElementById('sparkle1'), document.getElementById('sparkle2')];
+      if (!can) { resolve(); return; }
+
+      can.classList.add('pouring');
+      drops.forEach((d, i) => {
+        if (!d) return;
+        setTimeout(() => {
+          d.classList.remove('falling'); void d.offsetWidth; d.classList.add('falling');
+        }, 250 + i*130);
+      });
+      setTimeout(() => { if (pot) pot.classList.add('splash'); }, 650);
+      sparkles.forEach(s => { if (s) { s.classList.remove('show'); void s.offsetWidth; s.classList.add('show'); } });
+
+      setTimeout(() => {
+        can.classList.remove('pouring');
+        if (pot) pot.classList.remove('splash');
+        resolve();
+      }, 1050);
+    });
+  }
+
+  async function doCheckin(){
+    if (!liffUserId || CHECKIN_WORKER_URL === "PASTE_YOUR_WORKER_URL_HERE") {
+      alert('打卡功能尚未設定完成，請聯繫管理員。');
+      return;
+    }
+    const btn = document.getElementById('checkinBtn');
+    const label = document.getElementById('checkinLabel');
+    btn.disabled = true;
+    btn.classList.add('liked');
+    if (label) label.textContent = '澆水中...';
+    const wateringPromise = playWateringAnimation();
+    try {
+      const res = await fetch(`${CHECKIN_WORKER_URL}/checkin`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ userId: liffUserId })
+      });
+      const data = await res.json();
+      await wateringPromise; // 確保澆水動畫至少播完一輪
+      if (data && !data.error) {
+        gardenState = data;
+        refreshCheckinView();
+      }
+    } catch(e) { btn.disabled = false; btn.classList.remove('liked'); if (label) label.textContent = '點一下澆水打卡'; }
+  }
+
+  async function claimFruit(key){
+    const m = MILESTONES.find(x => x.key === key);
+    if (!m || gardenState.claimed[key] || gardenState.streakDays < m.days) return;
+    if (!liffUserId || CHECKIN_WORKER_URL === "PASTE_YOUR_WORKER_URL_HERE") {
+      alert('打卡功能尚未設定完成，請聯繫管理員。');
+      return;
+    }
+    const slotEl = document.querySelector(`.fruit-slot[onclick="claimFruit('${key}')"]`);
+    if (slotEl) slotEl.classList.add('shaking');
+    try {
+      const res = await fetch(`${CHECKIN_WORKER_URL}/claim`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ userId: liffUserId, milestone: key })
+      });
+      const data = await res.json();
+      // 讓搖晃動畫至少播完（400ms）再開獎，體感更有「開啟」的感覺
+      await new Promise(r => setTimeout(r, 400));
+      if (data && data.reward) {
+        gardenState.claimed[key] = data.reward;
+        refreshCheckinView();
+        document.getElementById('revealTitle').textContent = data.isBigPrize ? '🎉 中大獎了！' : '恭喜獲得';
+        document.getElementById('revealDesc').textContent = data.reward;
+        document.getElementById('revealOverlay').classList.add('open');
+        if (data.isBigPrize) launchConfetti();
+      }
+    } catch(e) {}
+  }
+
+  function launchConfetti(){
+    const colors = ['#E3A857','#4A7FA5','#8FC1E3','#E85D5D','#7BAF6E'];
+    const card = document.querySelector('.reveal-card');
+    if (!card) return;
+    for (let i = 0; i < 24; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random()*100 + '%';
+      piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+      piece.style.animationDelay = (Math.random()*0.3) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      card.appendChild(piece);
+      setTimeout(() => piece.remove(), 2000);
+    }
+  }
+
+  function closeReveal(){
+    document.getElementById('revealOverlay').classList.remove('open');
+  }
+
+  function refreshCheckinView(){
+    const body = document.querySelector('#detailView .detail-body');
+    if (body && body.querySelector('.garden-box')) {
+      body.innerHTML = checkinHTML();
+    }
+  }
+
+  async function sendAiQuestion(){
+    const input = document.getElementById('aiChatInput');
+    const question = input.value.trim();
+    if (!question) return;
+
+    const messagesBox = document.getElementById('aiChatMessages');
+    const sendBtn = document.getElementById('aiChatSend');
+
+    messagesBox.innerHTML += `<div class="ai-msg user">${question}</div>`;
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+    messagesBox.innerHTML += `<div class="ai-msg bot loading" id="aiLoadingMsg">思考中...</div>`;
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+    try {
+      if (AI_WORKER_URL === "PASTE_YOUR_WORKER_URL_HERE") {
+        throw new Error("尚未設定後端網址");
+      }
+      const res = await fetch(AI_WORKER_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ question })
+      });
+      const data = await res.json();
+      document.getElementById('aiLoadingMsg').remove();
+      if (data.answer) {
+        messagesBox.innerHTML += `<div class="ai-msg bot">${data.answer}</div>`;
+      } else {
+        messagesBox.innerHTML += `<div class="ai-msg bot">抱歉，暫時無法取得回答，請稍後再試或聯繫客服。</div>`;
+      }
+    } catch (err) {
+      const loadingMsg = document.getElementById('aiLoadingMsg');
+      if (loadingMsg) loadingMsg.remove();
+      messagesBox.innerHTML += `<div class="ai-msg bot">AI問答功能尚未設定完成，請聯繫管理員。</div>`;
+    }
+
+    input.disabled = false;
+    sendBtn.disabled = false;
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+    input.focus();
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (e.target && e.target.id === 'aiChatInput' && e.key === 'Enter') {
+      sendAiQuestion();
+    }
+  });
+
   function openDetail(id, title, icon){
     document.getElementById('detailTitle').textContent = title;
     const body = document.querySelector('#detailView .detail-body');
@@ -902,6 +1376,9 @@
       body.innerHTML = ASSETS_HTML;
     } else if (id === 'links') {
       body.innerHTML = LINKS_HTML;
+    } else if (id === 'checkin') {
+      body.innerHTML = checkinHTML();
+      loadGardenState().then(refreshCheckinView);
     } else {
       body.innerHTML = PLACEHOLDER_HTML;
       document.getElementById('detailIcon2').textContent = icon;
