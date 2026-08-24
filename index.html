@@ -330,20 +330,19 @@
     background:var(--white); display:flex; align-items:center; justify-content:center;
     cursor:pointer; position:relative; transition:transform .12s ease;
   }
-  .like-checkin-btn .btn-emoji{font-size:36px; line-height:1; transition:transform .2s ease;}
-  .watering-can-icon-wrap{position:relative; width:52px; height:52px; transition:transform .2s ease;}
-  .watering-can-icon{width:100%; height:100%; object-fit:contain; display:block;}
-  .watering-can-logo{
-    position:absolute; width:34%; top:44%; left:36%; transform:translate(-50%,-50%);
-    object-fit:contain; pointer-events:none;
-  }
+  .like-checkin-btn .btn-emoji{font-size:44px; line-height:1; transition:transform .2s ease;}
+  .triple-drop-wrap{position:relative; width:52px; height:52px; transition:transform .2s ease;}
+  .drop-item{position:absolute; font-size:22px; line-height:1;}
+  .drop-top{top:0; left:50%; transform:translateX(-50%);}
+  .drop-left{bottom:2px; left:2px;}
+  .drop-right{bottom:2px; right:2px;}
   .like-checkin-btn:active{transform:scale(0.88);}
   .like-checkin-btn.liked{
     background:var(--sage-pale); border-color:var(--pine);
     animation:likeBounce .5s cubic-bezier(.34,1.56,.64,1);
   }
   .like-checkin-btn.liked .btn-emoji{transform:scale(1.1);}
-  .like-checkin-btn.liked .watering-can-icon-wrap{transform:scale(1.1) rotate(-15deg);}
+  .like-checkin-btn.liked .triple-drop-wrap{transform:scale(1.15);}
   .like-checkin-btn:disabled{cursor:default;}
   @keyframes likeBounce{
     0%{transform:scale(1);}
@@ -1125,13 +1124,13 @@
     { key:"week4", days:28, label:"第28天", type:"small" },
     { key:"month", days:30, label:"第30天", type:"big" },
   ];
-  // 果實在盆栽上的擺放位置（彩虹弧形，弧度加深，大果實在弧線最高點置中）
+  // 果實在盆栽上的擺放位置（真正落在同一條圓弧上，大果實在弧線最高點置中）
   const FRUIT_POS = {
-    week1:{top:'64%', left:'4%'},
-    week2:{top:'22%', left:'26%'},
-    month:{top:'2%',  left:'50%'},   // 弧線最高點、正中間
-    week3:{top:'22%', left:'74%'},
-    week4:{top:'64%', left:'96%'},
+    week1:{top:'70%',   left:'4%'},
+    week2:{top:'27.6%', left:'17.5%'},
+    month:{top:'10%',   left:'50%'},   // 弧線最高點、正中間
+    week3:{top:'27.6%', left:'82.5%'},
+    week4:{top:'70%',   left:'96%'},
   };
 
   let gardenState = { streakDays: 0, claimed: {} };
@@ -1177,10 +1176,7 @@
         </div>
         <div class="like-checkin-wrap">
           <button class="like-checkin-btn ${alreadyCheckedToday ? 'liked' : ''}" id="checkinBtn" onclick="doCheckin()" ${alreadyCheckedToday ? 'disabled' : ''}>
-            <div class="watering-can-icon-wrap">
-              <img src="watering-can.png" class="watering-can-icon" alt="澆水壺">
-              <img src="three-logo-mark.png" class="watering-can-logo" alt="THREE">
-            </div>
+            <span class="btn-emoji">💧</span>
             <div class="like-burst">
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
