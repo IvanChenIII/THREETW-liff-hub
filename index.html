@@ -282,7 +282,7 @@
     background:linear-gradient(180deg, var(--sage-pale), var(--white));
     border-radius:20px; padding:20px 16px 16px; margin-bottom:16px; position:relative;
   }
-  .garden-streak{text-align:center; margin-bottom:14px;}
+  .garden-streak{text-align:center; margin-bottom:26px;}
   .garden-streak .streak-num{font-family:var(--font-display); font-size:34px; font-weight:700; color:var(--pine);}
   .garden-streak .streak-label{font-size:11px; color:#6B7570; margin-top:2px;}
   .garden-pot-wrap{position:relative; width:220px; height:220px; margin:0 auto 14px; display:flex; align-items:center; justify-content:center;}
@@ -296,25 +296,26 @@
     position:absolute; width:38px; height:38px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer; transition:transform .15s ease;
+    transform:translate(-50%,-50%);
   }
-  .fruit-slot:active{transform:scale(0.9);}
+  .fruit-slot:active{transform:translate(-50%,-50%) scale(0.9);}
   .fruit-slot.locked{background:rgba(0,0,0,0.06); opacity:0.5; cursor:default;}
   .fruit-slot.ready{background:#E85D5D; box-shadow:0 0 0 4px rgba(232,93,93,0.25); animation:fruitPop .5s cubic-bezier(.34,1.56,.64,1) both, fruitPulse 1.6s ease-in-out 0.5s infinite;}
   .fruit-slot.claimed{background:var(--sage-pale); opacity:0.6; cursor:default;}
   .fruit-slot.big{width:50px; height:50px; background:var(--brass); box-shadow:0 0 0 5px rgba(227,168,87,0.3);}
   .fruit-slot svg{width:18px; height:18px; stroke:white; fill:none; stroke-width:2;}
-  @keyframes fruitPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  @keyframes fruitPulse{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.12);}}
   @keyframes fruitPop{
-    0%{transform:scale(0); opacity:0;}
-    60%{transform:scale(1.25); opacity:1;}
-    100%{transform:scale(1);}
+    0%{transform:translate(-50%,-50%) scale(0); opacity:0;}
+    60%{transform:translate(-50%,-50%) scale(1.25); opacity:1;}
+    100%{transform:translate(-50%,-50%) scale(1);}
   }
   .fruit-slot.shaking{animation:fruitShake .4s ease !important;}
   @keyframes fruitShake{
-    0%,100%{transform:rotate(0) scale(1);}
-    25%{transform:rotate(-15deg) scale(1.1);}
-    50%{transform:rotate(15deg) scale(1.15);}
-    75%{transform:rotate(-10deg) scale(1.1);}
+    0%,100%{transform:translate(-50%,-50%) rotate(0) scale(1);}
+    25%{transform:translate(-50%,-50%) rotate(-15deg) scale(1.1);}
+    50%{transform:translate(-50%,-50%) rotate(15deg) scale(1.15);}
+    75%{transform:translate(-50%,-50%) rotate(-10deg) scale(1.1);}
   }
   .checkin-btn{
     display:block; width:100%; background:var(--pine); color:white; border:none;
@@ -325,17 +326,24 @@
 
   .like-checkin-wrap{display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:10px;}
   .like-checkin-btn{
-    width:64px; height:64px; border-radius:50%; border:2px solid var(--pine);
+    width:80px; height:80px; border-radius:50%; border:2px solid var(--pine);
     background:var(--white); display:flex; align-items:center; justify-content:center;
     cursor:pointer; position:relative; transition:transform .12s ease;
   }
-  .like-checkin-btn svg{width:28px; height:28px; stroke:var(--pine); fill:none; stroke-width:1.8; transition:all .2s ease;}
+  .like-checkin-btn .btn-emoji{font-size:36px; line-height:1; transition:transform .2s ease;}
+  .watering-can-icon-wrap{position:relative; width:52px; height:52px; transition:transform .2s ease;}
+  .watering-can-icon{width:100%; height:100%; object-fit:contain; display:block;}
+  .watering-can-logo{
+    position:absolute; width:34%; top:44%; left:36%; transform:translate(-50%,-50%);
+    object-fit:contain; pointer-events:none;
+  }
   .like-checkin-btn:active{transform:scale(0.88);}
   .like-checkin-btn.liked{
-    background:var(--pine); border-color:var(--pine);
+    background:var(--sage-pale); border-color:var(--pine);
     animation:likeBounce .5s cubic-bezier(.34,1.56,.64,1);
   }
-  .like-checkin-btn.liked svg{stroke:white; fill:white;}
+  .like-checkin-btn.liked .btn-emoji{transform:scale(1.1);}
+  .like-checkin-btn.liked .watering-can-icon-wrap{transform:scale(1.1) rotate(-15deg);}
   .like-checkin-btn:disabled{cursor:default;}
   @keyframes likeBounce{
     0%{transform:scale(1);}
@@ -1117,13 +1125,13 @@
     { key:"week4", days:28, label:"第28天", type:"small" },
     { key:"month", days:30, label:"第30天", type:"big" },
   ];
-  // 果實在盆栽上的擺放位置（沿著一條弧線排列，之後你有實際圖片可以再微調）
+  // 果實在盆栽上的擺放位置（彩虹弧形，弧度加深，大果實在弧線最高點置中）
   const FRUIT_POS = {
-    week1:{top:'34%', left:'10%'},
-    week2:{top:'13%', left:'30%'},
-    week3:{top:'6%',  left:'50%'},
-    week4:{top:'13%', left:'70%'},
-    month:{top:'34%', left:'87%'},
+    week1:{top:'64%', left:'4%'},
+    week2:{top:'22%', left:'26%'},
+    month:{top:'2%',  left:'50%'},   // 弧線最高點、正中間
+    week3:{top:'22%', left:'74%'},
+    week4:{top:'64%', left:'96%'},
   };
 
   let gardenState = { streakDays: 0, claimed: {} };
@@ -1158,7 +1166,7 @@
           <div class="streak-label">連續打卡天數</div>
         </div>
         <div class="garden-pot-wrap" id="gardenPotWrap">
-          <div style="font-size:64px;" class="garden-pot-emoji" id="gardenPotEmoji">🪴</div>
+          <div style="font-size:100px;" class="garden-pot-emoji" id="gardenPotEmoji">🪴</div>
           <div class="watering-can" id="wateringCan">🪣</div>
           <div class="water-drop" id="drop1"></div>
           <div class="water-drop" id="drop2"></div>
@@ -1169,7 +1177,10 @@
         </div>
         <div class="like-checkin-wrap">
           <button class="like-checkin-btn ${alreadyCheckedToday ? 'liked' : ''}" id="checkinBtn" onclick="doCheckin()" ${alreadyCheckedToday ? 'disabled' : ''}>
-            <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            <div class="watering-can-icon-wrap">
+              <img src="watering-can.png" class="watering-can-icon" alt="澆水壺">
+              <img src="three-logo-mark.png" class="watering-can-logo" alt="THREE">
+            </div>
             <div class="like-burst">
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
