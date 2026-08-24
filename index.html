@@ -1124,13 +1124,13 @@
     { key:"week4", days:28, label:"第28天", type:"small" },
     { key:"month", days:30, label:"第30天", type:"big" },
   ];
-  // 果實在盆栽上的擺放位置（真正落在同一條圓弧上，大果實在弧線最高點置中）
+  // 果實在盆栽上的擺放位置（往上移，維持相同弧度）
   const FRUIT_POS = {
-    week1:{top:'70%',   left:'4%'},
-    week2:{top:'27.6%', left:'17.5%'},
-    month:{top:'10%',   left:'50%'},   // 弧線最高點、正中間
-    week3:{top:'27.6%', left:'82.5%'},
-    week4:{top:'70%',   left:'96%'},
+    week1:{top:'40%',   left:'4%'},
+    week2:{top:'17.4%', left:'17.5%'},
+    month:{top:'8%',    left:'50%'},   // 弧線最高點、正中間
+    week3:{top:'17.4%', left:'82.5%'},
+    week4:{top:'40%',   left:'96%'},
   };
 
   let gardenState = { streakDays: 0, claimed: {} };
