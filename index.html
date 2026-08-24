@@ -1117,11 +1117,13 @@
     { key:"week4", days:28, label:"第28天", type:"small" },
     { key:"month", days:30, label:"第30天", type:"big" },
   ];
-  // 果實在盆栽上的擺放位置（百分比座標，之後你有實際圖片可以再微調）
+  // 果實在盆栽上的擺放位置（沿著一條弧線排列，之後你有實際圖片可以再微調）
   const FRUIT_POS = {
-    week1:{top:'62%', left:'28%'}, week2:{top:'50%', left:'68%'},
-    week3:{top:'38%', left:'32%'}, week4:{top:'28%', left:'62%'},
-    month:{top:'15%', left:'46%'},
+    week1:{top:'34%', left:'10%'},
+    week2:{top:'13%', left:'30%'},
+    week3:{top:'6%',  left:'50%'},
+    week4:{top:'13%', left:'70%'},
+    month:{top:'34%', left:'87%'},
   };
 
   let gardenState = { streakDays: 0, claimed: {} };
