@@ -569,13 +569,16 @@
     const LIFF_ID = "2011158368-Kz94adPg";
     if (typeof liff === "undefined") return;
     liff.init({ liffId: LIFF_ID }).then(() => {
-      if (liff.isLoggedIn()) {
-        liff.getProfile().then(profile => {
-          document.getElementById('greetingText').textContent = profile.displayName + "，您好";
-          liffUserId = profile.userId;
-        }).catch(()=>{});
-      }
-    }).catch(err => console.error("LIFF init failed", err));
+  if (!liff.isLoggedIn()) {
+    liff.login();
+    return;
+  }
+  liff.getProfile().then(profile => {
+    document.getElementById('greetingText').textContent = profile.displayName + "，您好";
+    liffUserId = profile.userId;
+    loadGardenState();
+  }).catch(()=>{});
+}).catch(err => console.error("LIFF init failed", err));
   }
   initLiff();
 
