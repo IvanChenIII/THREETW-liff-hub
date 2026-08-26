@@ -563,9 +563,8 @@
 
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script>
-  // ---- LIFF 初始化（之後填入你申請到的 LIFF ID）----
-  // 目前先留空白殼，沒有 LIFF ID 時在一般瀏覽器開啟也能正常預覽畫面
-        function initLiff(){
+  // ---- LIFF 初始化 ----
+  function initLiff(){
     const LIFF_ID = "2011158368-Kz94adPg";
     if (typeof liff === "undefined") return;
     liff.init({ liffId: LIFF_ID }).then(() => {
@@ -579,10 +578,10 @@
         liffUserId = profile.userId;
         loadGardenState();
       }).catch(err => {
-        alert("抓取個人資料失敗：" + err.message);
+        console.error("抓取個人資料失敗", err);
       });
     }).catch(err => {
-      alert("LIFF初始化失敗：" + err.message);
+      console.error("LIFF初始化失敗", err);
     });
   }
   initLiff();
@@ -789,7 +788,7 @@
   `;
 
   const BUNDLES_HTML = `
-    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📦 資料來源：官網套組頁面。註冊成為品牌大使才可購買套組；套組不可放入預付/循環智能出貨訂單。</div>
+    <div class="policy-note" style="background:var(--sage-pale); color:#3A4A40;">📦 資料來源：台灣入會套裝文宣（2608V1）。註冊成為品牌大使才可購買套組；套組不可放入預付/循環智能出貨訂單。</div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>單項產品</h3>
@@ -808,28 +807,28 @@
       <div class="pack-card gold">
         <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_ProCollection.png?width=600&height=600" alt="典藏思睿套組">
         <div class="tier-name" style="width:auto;">典藏思睿套組</div>
-        <div class="tier-cond">內含6款免費產品；立即獲得840CV，11個4週期間推送660CV。12個支付期間享三星級支付資格。</div>
+        <div class="tier-cond">立即推送840CV，11個為期4週的60CV（共660CV）。在12個支付週內以三星級支付。代幣TWD 3,600。</div>
         <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$94,500｜1,500CV｜推薦獎金(PIB) $12,000</div>
       </div>
 
       <div class="pack-card">
         <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_BusinessBuilderCompleteLine%20(1).png?width=600&height=600" alt="思睿全方位品牌套組">
         <div class="tier-name" style="width:auto;">思睿全方位品牌套組</div>
-        <div class="tier-cond">立即獲得700CV，3個4週期間推送180CV。12個支付期間享三星級支付資格。</div>
+        <div class="tier-cond">立即推送520CV，3個為期4週的60CV（共180CV）。在12個支付週內以三星級支付。代幣TWD 1,650。</div>
         <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$47,800｜700CV｜推薦獎金(PIB) $6,450</div>
       </div>
 
       <div class="pack-card">
         <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_BusinessBuilderSignature.png?width=600&height=600" alt="品牌營運補給套組">
         <div class="tier-name" style="width:auto;">品牌營運補給套組</div>
-        <div class="tier-cond">立即獲得700CV，另180CV於3個4週週期內分配到帳。12個支付期間享三星級支付資格。</div>
+        <div class="tier-cond">立即推送520CV，3個為期4週的60CV（共180CV）。在12個支付週內以三星級支付。代幣TWD 1,650。</div>
         <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$47,800｜700CV｜推薦獎金(PIB) $6,450</div>
       </div>
 
       <div class="pack-card">
         <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_TheCompleteLine.png?width=600&height=600" alt="思睿全方位套組">
         <div class="tier-name" style="width:auto;">思睿全方位套組</div>
-        <div class="tier-cond">實惠入門選擇，含展示之全部產品。8個支付期間享三星級支付資格。</div>
+        <div class="tier-cond">在8個支付週內以三星級支付。</div>
         <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$22,220｜300CV｜推薦獎金(PIB) $3,600</div>
       </div>
 
@@ -837,7 +836,21 @@
         <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_SignaturePack.png?width=600&height=600" alt="思睿套組">
         <div class="tier-name" style="width:auto;">思睿套組</div>
         <div class="tier-cond">正式成為品牌大使，含展示之全部產品。</div>
-        <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$11,200｜150CV｜推薦獎金(PIB) $900</div>
+        <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$11,200｜150CV｜推薦獎金(PIB) $910</div>
+      </div>
+
+      <div class="pack-card">
+        <img src="visage-buy3get1.png" alt="薇莎買3送1套組">
+        <div class="tier-name" style="width:auto;">薇莎買3送1套組</div>
+        <div class="tier-cond">代幣TWD 1,050。</div>
+        <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$31,470｜500CV｜推薦獎金(PIB) $4,500</div>
+      </div>
+
+      <div class="pack-card">
+        <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_VisageCollection.png?width=600&height=600" alt="薇莎精選套組">
+        <div class="tier-name" style="width:auto;">薇莎精選套組</div>
+        <div class="tier-cond">完整Visage系列，附加額外驚喜福利。</div>
+        <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$10,800｜170CV｜推薦獎金(PIB) $1,200</div>
       </div>
 
       <div class="pack-card">
@@ -847,12 +860,7 @@
         <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$6,660｜100CV｜推薦獎金(PIB) $500</div>
       </div>
 
-      <div class="pack-card">
-        <img src="https://wall.threeinternational.com/hs-fs/hubfs/EnrollmentPacks_SKU_2601_v1_TW_VisageCollection.png?width=600&height=600" alt="薇莎精選套組">
-        <div class="tier-name" style="width:auto;">薇莎精選套組</div>
-        <div class="tier-cond">完整Visage系列，附加額外驚喜福利。</div>
-        <div class="tier-cond" style="color:#7BA3D5; font-weight:600;">$10,800｜170CV｜推薦獎金(PIB) $1,200</div>
-      </div>
+      <div class="policy-desc" style="margin-top:10px; font-size:11px;">團隊管理延遲收入為第一代、第二代、第三代。上列套組中的代幣有效期為60天。</div>
     </div>
 
     <div class="policy-section">
