@@ -566,23 +566,24 @@
   // ---- LIFF 初始化（之後填入你申請到的 LIFF ID）----
   // 目前先留空白殼，沒有 LIFF ID 時在一般瀏覽器開啟也能正常預覽畫面
         function initLiff(){
-        alert("initLiff 開始執行");
-        const LIFF_ID = "2011158368-Kz94adPg";
-        if (typeof liff === "undefined") {
-          alert("liff 物件不存在，SDK沒載入成功");
-          return;
-        }
-  }
-  liff.getProfile().then(profile => {
-    document.getElementById('greetingText').textContent = profile.displayName + "，您好";
-    liffUserId = profile.userId;
-    loadGardenState();
-        }).catch(err => {
-          alert("抓取個人資料失敗：" + err.message);
-        });
+    const LIFF_ID = "2011158368-Kz94adPg";
+    if (typeof liff === "undefined") return;
+    liff.init({ liffId: LIFF_ID }).then(() => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+      liff.getProfile().then(profile => {
+        const greetingEl = document.getElementById('greetingText');
+        if (greetingEl) greetingEl.textContent = profile.displayName + "，您好";
+        liffUserId = profile.userId;
+        loadGardenState();
       }).catch(err => {
-        alert("LIFF初始化失敗：" + err.message);
+        alert("抓取個人資料失敗：" + err.message);
       });
+    }).catch(err => {
+      alert("LIFF初始化失敗：" + err.message);
+    });
   }
   initLiff();
 
