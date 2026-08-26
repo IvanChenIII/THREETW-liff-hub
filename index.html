@@ -577,8 +577,12 @@
     document.getElementById('greetingText').textContent = profile.displayName + "，您好";
     liffUserId = profile.userId;
     loadGardenState();
-  }).catch(()=>{});
-}).catch(err => console.error("LIFF init failed", err));
+        }).catch(err => {
+          alert("抓取個人資料失敗：" + err.message);
+        });
+      }).catch(err => {
+        alert("LIFF初始化失敗：" + err.message);
+      });
   }
   initLiff();
 
