@@ -565,13 +565,13 @@
 <script>
   // ---- LIFF 初始化（之後填入你申請到的 LIFF ID）----
   // 目前先留空白殼，沒有 LIFF ID 時在一般瀏覽器開啟也能正常預覽畫面
-  function initLiff(){
-    const LIFF_ID = "2011158368-Kz94adPg";
-    if (typeof liff === "undefined") return;
-    liff.init({ liffId: LIFF_ID }).then(() => {
-  if (!liff.isLoggedIn()) {
-    liff.login();
-    return;
+        function initLiff(){
+        alert("initLiff 開始執行");
+        const LIFF_ID = "2011158368-Kz94adPg";
+        if (typeof liff === "undefined") {
+          alert("liff 物件不存在，SDK沒載入成功");
+          return;
+        }
   }
   liff.getProfile().then(profile => {
     document.getElementById('greetingText').textContent = profile.displayName + "，您好";
