@@ -246,38 +246,6 @@
   }
   .link-card .link-icon svg{width:19px; height:19px; stroke:var(--pine); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
 
-  /* ===== AI Chat Widget ===== */
-  .ai-chat-box{
-    background:var(--white); border:1.5px solid var(--sage-pale); border-radius:16px;
-    padding:14px; margin-bottom:22px;
-  }
-  .ai-chat-title{
-    display:flex; align-items:center; gap:8px; font-family:var(--font-display);
-    font-weight:700; font-size:13.5px; color:var(--pine); margin-bottom:10px;
-  }
-  .ai-chat-title svg{width:18px; height:18px; stroke:var(--pine); fill:none; stroke-width:1.8;}
-  .ai-chat-messages{
-    display:flex; flex-direction:column; gap:8px; margin-bottom:10px;
-    max-height:280px; overflow-y:auto;
-  }
-  .ai-msg{padding:9px 12px; border-radius:12px; font-size:12.5px; line-height:1.6; max-width:88%;}
-  .ai-msg.user{background:var(--pine); color:var(--white); align-self:flex-end; border-bottom-right-radius:3px;}
-  .ai-msg.bot{background:var(--sage-pale); color:var(--ink); align-self:flex-start; border-bottom-left-radius:3px; white-space:pre-wrap;}
-  .ai-msg.bot.loading{color:#8A928C; font-style:italic;}
-  .ai-chat-input-row{display:flex; gap:8px;}
-  .ai-chat-input{
-    flex:1; border:1px solid var(--line); border-radius:20px; padding:9px 14px;
-    font-size:12.5px; font-family:var(--font-body); outline:none;
-  }
-  .ai-chat-input:focus{border-color:var(--sage);}
-  .ai-chat-send{
-    background:var(--pine); color:var(--white); border:none; border-radius:50%;
-    width:36px; height:36px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-  }
-  .ai-chat-send:disabled{opacity:0.5;}
-  .ai-chat-hint{font-size:10.5px; color:#8A928C; margin-top:8px; text-align:center;}
-
   /* ===== Check-in / Garden ===== */
   .garden-box{
     background:linear-gradient(180deg, var(--sage-pale), var(--white));
@@ -489,7 +457,7 @@
     <div class="spot-list">
       <a class="spot-card grey" href="#" onclick="openDetail('campaigns','進行中活動','🔥');return false;">
         <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg></div>
-        <div class="spot-text"><div class="spot-title">進行中活動</div><div class="spot-desc">極限精選套組、耀星聚能營、濟州島之旅、雙倍旅遊積分</div></div>
+        <div class="spot-text"><div class="spot-title">進行中活動</div><div class="spot-desc">耀星聚能營、濟州島之旅</div></div>
         <div class="spot-arrow">›</div>
       </a>
 
@@ -513,7 +481,7 @@
 
       <a class="spot-card grey" href="#" onclick="openDetail('policy','制度說明','📋');return false;">
         <div class="spot-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div>
-        <div class="spot-text"><div class="spot-title">制度說明</div><div class="spot-desc">獎勵制度・AI 問答小幫手</div></div>
+        <div class="spot-text"><div class="spot-title">制度說明</div><div class="spot-desc">獎勵制度說明</div></div>
         <div class="spot-arrow">›</div>
       </a>
 
@@ -597,20 +565,6 @@
 
   const POLICY_HTML = `
     <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容，屬 BA 專屬資訊，請勿轉發給一般消費會員。</div>
-
-    <div class="ai-chat-box">
-      <div class="ai-chat-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 10a1 1 0 100-2 1 1 0 000 2zM15 10a1 1 0 100-2 1 1 0 000 2zM8 14c1 1.5 2.5 2 4 2s3-.5 4-2"/></svg>AI 問答小幫手</div>
-      <div class="ai-chat-messages" id="aiChatMessages">
-        <div class="ai-msg bot">您好！我是獎金制度小幫手，可以問我關於客戶收入、套裝獎金、級別資格、碰局收入等問題。</div>
-      </div>
-      <div class="ai-chat-input-row">
-        <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="輸入問題，例如：三星要達到什麼條件？" maxlength="200">
-        <button class="ai-chat-send" id="aiChatSend" onclick="sendAiQuestion()">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="white" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="ai-chat-hint">回答僅供參考，正式數字請以官方獎金制度文件為準</div>
-    </div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.5 12.5a2 2 0 002 1.5h8.5a2 2 0 002-1.7L21 7H6"/></svg><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
@@ -793,8 +747,8 @@
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>單項產品</h3>
-      <div class="prod-card"><img src="https://threeinternational.com/shopping/productimages/EnrollmentPacks%28Updated-Packaging%29_SKU_2608_v1_Collagene-CartonSachetNEW.png" alt="蔻絲飲品"><div class="prod-info"><div class="prod-name">蔻絲飲品</div><div class="prod-meta">$2,200（含稅運）｜30 CV</div></div></div>
-      <div class="prod-card"><img src="https://threeinternational.com/shopping/productimages/EnrollmentPacks%28Updated-Packaging%29_SKU_2608_v1_Eternel-NEWCartonSachet.png" alt="恩蓓飲品"><div class="prod-info"><div class="prod-name">恩蓓飲品</div><div class="prod-meta">$3,890（含稅運）｜60 CV</div></div></div>
+      <div class="prod-card"><img src="collagene-new.jpg" alt="蔻絲飲品"><div class="prod-info"><div class="prod-name">蔻絲飲品</div><div class="prod-meta">$2,200（含稅運）｜30 CV</div></div></div>
+      <div class="prod-card"><img src="eternel-new.jpg" alt="恩蓓飲品"><div class="prod-info"><div class="prod-name">恩蓓飲品</div><div class="prod-meta">$3,890（含稅運）｜60 CV</div></div></div>
       <div class="prod-card"><img src="https://wall.threeinternational.com/hubfs/vitalite-lg-638488836167604163.webp" alt="維德膠囊食品"><div class="prod-info"><div class="prod-name">維德膠囊食品</div><div class="prod-meta">$2,450（含稅運）｜35 CV</div></div></div>
       <div class="prod-card"><img src="https://wall.threeinternational.com/hubfs/cleanse-lg-638725633683357996.webp" alt="淨潤洗面乳"><div class="prod-info"><div class="prod-name">淨潤洗面乳</div><div class="prod-meta">$1,850（含稅運）｜30 CV</div></div></div>
       <div class="prod-card"><img src="https://wall.threeinternational.com/hubfs/toner-lg-638725633690139446.webp" alt="煥采化妝水"><div class="prod-info"><div class="prod-name">煥采化妝水</div><div class="prod-meta">$1,400（含稅運）｜20 CV</div></div></div>
@@ -939,12 +893,12 @@
       intro:"Visage Crème Caviar保濕霜，作為Visage護膚程序的最後一步驟。",
       ingredients:["地膚子萃取物","竹葉花椒果萃取物","人參根萃取物","地茶葉萃取物","神經美容分子（六胜肽-4、四胜肽-7）"] },
     eternel: { name:"Éternel｜恩蓓飲品", tagline:"植物多酚複合配方",
-      img:"product-eternel.jpg",
+      img:"eternel-new.jpg",
       intro:"每日補充多種水果來源之多酚類。Éternel結合脂質體之保健成分與多酚複合配方，陪伴你維持健康與青春光采。",
       features:["有助於養顏美容","有助於維持青春美麗","有助於活力體力","可提供植物營養素"],
       ingredients:["白藜蘆醇","谷胱甘肽","超級水果（10種）","輔酶Q10"] },
     collagene: { name:"Collagène｜蔻絲飲品", tagline:"海洋來源膠原蛋白",
-      img:"product-collagene.jpg",
+      img:"collagene-new.jpg",
       intro:"用Collagène綻放自然光采。這款美味的膠原蛋白複合配方，以精選成分全面滋養，陪伴你做好每日美麗保養。",
       features:["有助於養顏美容","有助於維持青春光采","有助於靈活力"],
       ingredients:["源自海洋的膠原蛋白","石榴汁濃縮","玻尿酸","生物素","維生素C"] },
@@ -1062,8 +1016,6 @@
     </div>
   `;
 
-  // ---- AI 問答小幫手 ----
-  const AI_WORKER_URL = "https://purple-sun-043b.ivan-iii-earth.workers.dev";
   const CHECKIN_WORKER_URL = "https://purple-sun-043b.ivan-iii-earth.workers.dev";
 
   const MILESTONES = [
@@ -1267,55 +1219,6 @@
       body.innerHTML = checkinHTML();
     }
   }
-
-  async function sendAiQuestion(){
-    const input = document.getElementById('aiChatInput');
-    const question = input.value.trim();
-    if (!question) return;
-
-    const messagesBox = document.getElementById('aiChatMessages');
-    const sendBtn = document.getElementById('aiChatSend');
-
-    messagesBox.innerHTML += `<div class="ai-msg user">${question}</div>`;
-    input.value = '';
-    input.disabled = true;
-    sendBtn.disabled = true;
-    messagesBox.innerHTML += `<div class="ai-msg bot loading" id="aiLoadingMsg">思考中...</div>`;
-    messagesBox.scrollTop = messagesBox.scrollHeight;
-
-    try {
-      if (AI_WORKER_URL === "PASTE_YOUR_WORKER_URL_HERE") {
-        throw new Error("尚未設定後端網址");
-      }
-      const res = await fetch(AI_WORKER_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ question })
-      });
-      const data = await res.json();
-      document.getElementById('aiLoadingMsg').remove();
-      if (data.answer) {
-        messagesBox.innerHTML += `<div class="ai-msg bot">${data.answer}</div>`;
-      } else {
-        messagesBox.innerHTML += `<div class="ai-msg bot">抱歉，暫時無法取得回答，請稍後再試或聯繫客服。</div>`;
-      }
-    } catch (err) {
-      const loadingMsg = document.getElementById('aiLoadingMsg');
-      if (loadingMsg) loadingMsg.remove();
-      messagesBox.innerHTML += `<div class="ai-msg bot">AI問答功能尚未設定完成，請聯繫管理員。</div>`;
-    }
-
-    input.disabled = false;
-    sendBtn.disabled = false;
-    messagesBox.scrollTop = messagesBox.scrollHeight;
-    input.focus();
-  }
-
-  document.addEventListener('keydown', function(e){
-    if (e.target && e.target.id === 'aiChatInput' && e.key === 'Enter') {
-      sendAiQuestion();
-    }
-  });
 
   function openDetail(id, title, icon){
     document.getElementById('detailTitle').textContent = title;
