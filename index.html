@@ -209,7 +209,7 @@
     background:var(--white); border:1px solid var(--line); border-radius:12px;
     padding:12px; margin-bottom:10px; overflow:hidden;
   }
-  .pack-card img{width:100%; border-radius:8px; margin-bottom:8px; display:block; background:#FFFFFF;}
+  .pack-card img{width:100%; border-radius:8px; margin-bottom:8px; display:block; background:#F7EFE0;}
   .pack-card.gold{border-color:var(--brass);}
 
   .prod-grid{display:flex; flex-direction:column; gap:10px;}
@@ -503,11 +503,13 @@
         <div class="spot-arrow">›</div>
       </a>
 
+      <!-- 打卡集點暫時隱藏，等兌換流程設計好再打開
       <a class="spot-card gold" href="#" onclick="openDetail('checkin','打卡集點','⭐');return false;">
         <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></div>
         <div class="spot-text"><div class="spot-title">打卡集點</div><div class="spot-desc">每日打卡，養出你的產品盆栽</div></div>
         <div class="spot-arrow">›</div>
       </a>
+      -->
     </div>
 
   </main>
@@ -525,6 +527,7 @@
     <div class="placeholder">
       <div class="ph-icon" id="detailIcon2">📄</div>
       <div class="ph-title">內容準備中</div>
+      <div class="ph-desc">內容準備中。</div>
     </div>
   </div>
 </div>
@@ -559,10 +562,11 @@
     <div class="placeholder">
       <div class="ph-icon" id="detailIcon2">📄</div>
       <div class="ph-title">內容準備中</div>
+      <div class="ph-desc">內容準備中。</div>
     </div>`;
 
   const POLICY_HTML = `
-    <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容。</div>
+    <div class="policy-note">⚠️ 本頁僅收錄「獎金制度」相關內容，屬 BA 專屬資訊，請勿轉發給一般消費會員。</div>
 
     <div class="policy-section">
       <h3><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.5 12.5a2 2 0 002 1.5h8.5a2 2 0 002-1.7L21 7H6"/></svg><span class="num">01</span> 客戶收入（零售利潤，每日支付）</h3>
@@ -899,7 +903,7 @@
       img:"collagene-new.jpg",
       intro:"用Collagène綻放自然光采。這款美味的膠原蛋白複合配方，以精選成分全面滋養，陪伴你做好每日美麗保養。",
       features:["有助於養顏美容","有助於維持青春光采","有助於靈活力"],
-      ingredients:["源自海洋的膠原蛋白","石榴汁濃縮","生物素","維生素C"] },
+      ingredients:["源自海洋的膠原蛋白","石榴汁濃縮","玻尿酸","生物素","維生素C"] },
     vitalite: { name:"Vitalité｜維德膠囊食品", tagline:"超級食物複合配方＋綜合維生素",
       img:"product-vitalite.jpg",
       intro:"為您打好每日營養基礎。Vitalité提供身體所需的多元營養素，補充維生素、礦物質及微量元素，有助健康維持。",
@@ -988,7 +992,7 @@
       </a>
       <a class="link-card" href="https://threeinternational.com/en" target="_blank">
         <div class="link-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="12" y1="8" x2="12" y2="21"/></svg></div>
-        <div class="link-text"><div class="link-title">THREE Store</div><div class="link-sub">官方購物商城(會員請至會員後台登入購買)</div></div>
+        <div class="link-text"><div class="link-title">THREE Store</div><div class="link-sub">官方購物商城</div></div>
         <div class="chevron">›</div>
       </a>
       <a class="link-card" href="https://www.instagram.com/three_taiwan_official/" target="_blank">
