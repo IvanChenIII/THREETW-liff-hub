@@ -457,7 +457,7 @@
     <div class="spot-list">
       <a class="spot-card grey" href="#" onclick="openDetail('campaigns','進行中活動','🔥');return false;">
         <div class="spot-icon"><svg viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1-1-2-1-3 2 1 3 3 3 5a5 5 0 01-10 0c0-5 4-6 5-11z"/></svg></div>
-        <div class="spot-text"><div class="spot-title">進行中活動</div><div class="spot-desc">耀星聚能營、濟州島之旅</div></div>
+        <div class="spot-text"><div class="spot-title">進行中活動</div><div class="spot-desc">雙倍旅遊積分、Boost Up優惠套裝、啟動加倍金、耀星聚能營、濟州島之旅</div></div>
         <div class="spot-arrow">›</div>
       </a>
 
@@ -835,6 +835,58 @@
   `;
 
   const CAMPAIGNS_HTML = `
+    <div class="policy-section">
+      <div class="policy-note" style="background:#FDEBEB; color:#8A3A3A;">🔥 限時回歸活動期間：2026年9月18日12:00AM 至 2026年10月5日11:59PM（台灣時間）。</div>
+      <img src="psv_banner.jpg" alt="雙倍旅遊積分" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>限時回歸：雙倍旅遊積分（Double Your PSV）</h3>
+      <div class="policy-desc">適用市場：中國大陸、香港、台灣及澳門。於限定期間內，個人推薦新品牌大使加入，即可在「濟州島旅遊獎勵」競賽中獲得雙倍個人旅遊積分（PSV）！</div>
+      <div class="sub-label">活動規則</div>
+      <ul class="mini-list">
+        <li>在活動期間個人推薦一位新品牌大使</li>
+        <li>該新品牌大使購買入會套組或自選入會套組加入</li>
+        <li>在「濟州島旅遊獎勵」資格計算中，您將從該符合資格的套組獲得雙倍PSV</li>
+      </ul>
+      <div class="policy-note" style="background:#FBEBD3; color:#6B5330;">活動期間內，每位品牌大使可獲得的額外獎勵PSV上限為15,000 PSV。</div>
+      <div class="sub-label">例子</div>
+      <div class="policy-desc">新品牌大使選購480CV套組加入 → 推薦人原本獲得480PSV → 在雙倍旅遊積分活動期間，推薦人可獲得960PSV。</div>
+      <div class="sub-label">條款＆細則</div>
+      <ul class="mini-list">
+        <li>活動期間內，每位品牌大使最高可獲得額外15,000PSV獎勵。一旦達到上限，後續符合資格的推薦將僅獲得原PSV</li>
+        <li>獎勵PSV僅適用於選購入會套組或自選入會套組的新品牌大使</li>
+        <li>獎勵PSV僅適用於「濟州島旅遊獎勵」之積分計算</li>
+        <li>雙倍PSV將授予在活動期間內推薦新品牌大使加入的推薦人，並計入「濟州島旅遊獎勵」的PSV門檻要求</li>
+        <li>獎勵PSV將於該星期佣金結算完成後入帳</li>
+        <li>若訂單發生退貨、退款、取消或撤銷付款，對應的獎勵PSV將予以扣除</li>
+        <li>本活動僅適用於入會套組或自選入會套組</li>
+        <li>THREE International保留隨時修改、暫停或終止本活動之權利</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <div class="policy-note" style="background:#E8E4FB; color:#4A3A8A;">🚀 活動期間：9月18日12:00AM 至 10月5日11:59PM（台灣時間）。適用市場：台灣。</div>
+      <img src="boostup_banner.jpg" alt="Boost Up 優惠套裝" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>Boost Up 優惠套裝（台灣 OTG）</h3>
+      <div class="policy-desc">選購必備營養補充品，享受Boost Up優惠套裝，節省更多！升級你的日常養護，升級你的優惠福利。新品牌大使首次註冊購買可享免入會費優惠。</div>
+      <div class="sub-label">ÉTERNEL PACK</div>
+      <div class="policy-desc">TWD 33,450｜450CV｜PIB TWD 4,500（僅限新品牌大使首次註冊）－ 內含Éternel x10、Visage(2+1免費)。總節省 TWD 11,100。</div>
+      <div class="sub-label">COLLAGÈNE PACK</div>
+      <div class="policy-desc">TWD 19,500｜260CV｜PIB TWD 2,400（僅限新品牌大使首次註冊）－ 內含Collagène x12、Visage(1免費)。總節省 TWD 9,570。</div>
+      <div class="sub-label">SKINCARE PACK</div>
+      <div class="policy-desc">TWD 15,060｜240CV｜PIB TWD 1,350（僅限新品牌大使首次註冊）－ 內含Visage系列4件組。總節省 TWD 7,320。</div>
+      <div class="sub-label">活動權益</div>
+      <ul class="mini-list">
+        <li>新註冊會員：新進品牌大使凡購買上述任一Boost Up套組，即可享有免入會費優惠</li>
+        <li>現有品牌大使：在後台系統購買Boost Up優惠套裝，可獲得雙倍PSV，用於濟州島獎勵旅遊資格賬單</li>
+        <li>Boost Up套裝獎勵：新品牌大使透過Boost Up優惠套裝註冊，其推薦人可獲得雙倍PSV，用於濟州島獎勵旅遊資格</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <div class="policy-note" style="background:#FBEBD3; color:#6B5330;">⏱️ 促銷時間：2026年9月8日下午3:00 至 2026年10月20日下午2:59（香港時間）。適用市場：亞太地區。</div>
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>啟動加倍金（Launch Match Bonus）－您最初的60天至關重要</h3>
+      <img src="launchmatch_banner.jpg" alt="啟動加倍金" style="width:100%; border-radius:12px; margin-bottom:10px; display:block;">
+    </div>
+
     <div class="policy-section">
     <div class="policy-note" style="background:#DCEDDC; color:#35553B;">🔥 限時活動－耀星聚能營資格考核期：2026年6月2日至9月1日（台灣時間）。</div>
       <h3><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>亞太地區「耀星聚能營」（APAC Leadership Retreat）</h3>
